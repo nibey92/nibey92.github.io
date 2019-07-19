@@ -36,7 +36,7 @@ kramdown:
 owner:
   name: YebinY
   avatar: leonids-logo.png
-  job: "Train, Test, and Predict."
+  job: "Train, Test, and Predict the World"
   bio: ""
   email: yebinyoun@gmail.com
   disqus-shortname:
@@ -49,7 +49,7 @@ owner:
     ad-client:
     ad-slot:
   bing-verify:
-  github: yebinye
+  github: yebiny
   gitlab: #username
   stackoverflow: #123456/username   from a "http://stackoverflow.com/users/123456/username" link
   linkedin: #username
