@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Start blog!
-excerpt: "."
+excerpt: "블로그 개설"
 categories: [mumbling]
 comments: true
 ---
