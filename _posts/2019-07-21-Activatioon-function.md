@@ -2,7 +2,7 @@
 layout: post
 title: Activation Function
 excerpt: "활성화 함수에 대해 알아보자."
-categories: [deeplearning]
+categories: [deep learning]
 comments: true
 ---
 
