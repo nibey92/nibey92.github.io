@@ -1,4 +1,4 @@
-- name: yebin youn
-  descr: "Train, test, and predict the world!"
+- name: LSTM을 이용한 데이터 클러스터 분류
+  descr: "양성자 충돌시 나오는 데이터들은 클러스터를 이루기도 합니다. RNN을 이용하여 클러스터 안에서 붕괴된 입자를 찾고 재구성합니다."
   image: pong.png
-  github: https://github.com/yebiny
+  github: https://github.com/yebiny/RNN_forCluster
