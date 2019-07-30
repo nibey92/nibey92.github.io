@@ -17,9 +17,10 @@ comments: true
 ![over_1]({{ site.url }}/img/overfitting.png)
 
 그림에서 처럼 왼쪽은 제대로 학습이 되지 않은 상태, 가운데는 최적의 학습상태, 그리고 오른쪽이 overfitting 상태입니다. 만약 오른쪽 그림처럼 overfitting 인 상태라면 학습 데이터에 대해서만 정확하게 학습되어 실제 데이터에서는 좋은 성능을 보여주지 못하게 됩니다. 따라서, 아래 그림에서 처럼 traing data와 test data에 대해서 error 값이나 accuracy 값이 과하게 차이가 난다면 overfitting이 일어났다고 할 수 있습니다. 
-따라서 overfitting이란 학습데이터에 대해 과하게 학습하여 실제 데이터에 대한 오차가 증가하는 현상 이라 할 수 있습니다. 
 
 ![over_2]({{ site.url }}/img/overfitting2.png)
+
+`overfitting이란 학습데이터에 대해 과하게 학습하여 실제 데이터에 대한 오차가 증가하는 현상` 이라 할 수 있습니다.
 
 ## Over fitting 예방책
 ### validation data
