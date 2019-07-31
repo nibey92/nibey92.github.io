@@ -29,7 +29,7 @@ over fitting을 좀더 자세히 알기 위해서는 bias와 varience에 대한 
 * Bias: 실제 값에서 멀어진 척도
 * variance: 예측된 값들이 서로 얼마나 떨어져 있는가 척도
 
-bias와 variance를 줄이는 것이 딥러닝의 목표라 할 수 있습니다. 이때 bias가 높아진다는 것은 underfitting이 일어나는 것이고 variance가 높아진다는 것은 overfitting이 일어나는 것이라 할 수 있습니다. 또한 bias와 variace는 밑에 그림에서 볼 수 있듯 trade off 관계를 가지고 있습니다.
+bias와 variance를 줄이는 것이 딥러닝의 목표라 할 수 있습니다. 이때 `bias`가 높아진다는 것은 `underfitting`이 일어나는 것이고 `variance`가 높아진다는 것은 `overfitting`이 일어나는 것이라 할 수 있습니다. 또한 `bias와 variace`는 밑에 그림에서 볼 수 있듯 `trade off` 관계를 가지고 있습니다.
 ![over_2]({{ site.url }}/img/tradeoff.png)
 정리하자면
 * 높은 bias = 낮은 variance = under fitting
@@ -40,7 +40,7 @@ bias와 variance를 줄이는 것이 딥러닝의 목표라 할 수 있습니다
 ## Over fitting 예방책
 ### validation data
 ### dropout
-드롭아웃은 각 계층마다 일정 비율의 뉴런을 임의로 정해 drop 시켜 나머지 뉴런들만 학습하도록 하는 방법입니다. 네트워크 내부에서 이루어지는 ensemble learning 이라고 생각해도 좋습니다. 
+드롭아웃은 각 계층마다 일정 비율의 뉴런을 임의로 정해 drop 시켜 나머지 뉴런들만 학습하도록 하는 방법입니다. 네트워크 내부에서 이루어지는 `ensemble learning` 이라고 생각해도 좋습니다. 
 > `ensenmble learning`은 개별적으로 학습시킨 여러 모델의 출력을 종합해 추론하는 방식입니다. 뉴럴 네트워크를 개별적으로 학습시키고, 각 네트워크에 같은 input을 주어 나온 출력 뉴런 각각의 평균을 구한 다음 여기서 가장 큰 값을 정답으로 판정하면 되기 때문에 간단히 구현할 수 있습니다. 
 > * $$1/N \sum_{i}^{N} output_i$$
 
@@ -59,9 +59,10 @@ bias와 variance를 줄이는 것이 딥러닝의 목표라 할 수 있습니다
 Keras에서는 라이브러리를 이용하여 쉽게 구현 할 수 있도록 해놓았습니다.
 `EarlyStopping` 콜백을 사용하면 정해진 epoch 동안 모니터링 지표가 향상되지 않을 때 훈련을 중지할 수 있습니다. 일반적으로 이 콜백은 훈련하는 동안 모델을 계속 저장해주는 `ModelCheckpoint`와 함께 사용합니다. (가장 좋은 모델만 저장 가능)
 {% highlight ruby %} 
-    # 1 epoch 동안 valldation accuracy가 더 향상되지 않으면 중단
+    #1 epoch 동안 valldation accuracy가 더 향상되지 않으면 중단
     EarlyStopping(monitor='val_acc', patience=1) 
     # set checkpointer and save model
     checkpointer = ModelCheckpoint(filepath=save_path+'model.hdf5', verbose=1, save_best_only=True)
+    
 {% endhighlight %}
 
