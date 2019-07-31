@@ -17,7 +17,7 @@ comments: true
 ![over_1]({{ site.url }}/img/overfitting.png)
 
 그림에서 처럼 왼쪽은 제대로 학습이 되지 않은 상태, 가운데는 최적의 학습상태, 그리고 오른쪽이 overfitting 상태입니다. 만약 오른쪽 그림처럼 overfitting 인 상태라면 학습 데이터에 대해서만 정확하게 학습되어 실제 데이터에서는 좋은 성능을 보여주지 못하게 됩니다. 따라서, 아래 그림에서 처럼 traing data와 test data에 대해서 error 값이나 accuracy 값이 과하게 차이가 난다면 overfitting이 일어났다고 할 수 있습니다. 
-한마디로 ovefitting 이란 `학습데이터에` `대해 과하게` `학습하여``실제 데이터에` `대한 오차가``증가하는 현상` 입니다.
+한마디로 ovefitting 이란 `학습 데이터에` `대해 과하게` `학습하여` `실제 데이터에` `대한 오차가` `증가하는 현상` 입니다.
 
 ![over_2]({{ site.url }}/img/overfitting2.png)
 
@@ -29,7 +29,7 @@ over fitting을 좀더 자세히 알기 위해서는 bias와 varience에 대한 
 * Bias: 실제 값에서 멀어진 척도
 * variance: 예측된 값들이 서로 얼마나 떨어져 있는가 척도
 
-bias와 variance를 줄이는 것이 딥러닝의 목표라 할 수 있습니다. 이때 bias가 높아진다는 것은 underfitting이 일어나는 것이고 variance가 높아진다는 것은 overfitting이 일어나는 것이라 할 수 있습니다. 또한 bias와 variace는 trade off 밑에 그림에서 볼 수 있듯 trade off 관계를 가지고 있습니다.
+bias와 variance를 줄이는 것이 딥러닝의 목표라 할 수 있습니다. 이때 bias가 높아진다는 것은 underfitting이 일어나는 것이고 variance가 높아진다는 것은 overfitting이 일어나는 것이라 할 수 있습니다. 또한 bias와 variace는 밑에 그림에서 볼 수 있듯 trade off 관계를 가지고 있습니다.
 ![over_2]({{ site.url }}/img/tradeoff.png)
 정리하자면
 * 높은 bias = 낮은 variance = under fitting
@@ -45,7 +45,6 @@ bias와 variance를 줄이는 것이 딥러닝의 목표라 할 수 있습니다
 > * $$1/N \sum_{i}^{N} output_i$$
 
 ![over_2]({{ site.url }}/img/dropout.png)
-
 
 ### L2 regularization
 가장 일반적으로 사용하는 regularization 기법으로 가중치가 클 수록 큰 패널티를 부과하여 오버피팅을 억제하는 방법입니다. 패널티를 부과하는 방법은 loss function에 $$ 1/2 \lambda \sum W^2 $$ 을 더해줍니다. 이 값을 미분한 값은 $$ \lambda W$$이고 오차역전파를 통해 계산한 기울기에 $$\lambda W$$를 더하게 되어 가중치 값이 그만큼 보정됩니다. 
