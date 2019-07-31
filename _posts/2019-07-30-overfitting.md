@@ -41,13 +41,15 @@ bias와 variance를 줄이는 것이 딥러닝의 목표라 할 수 있습니다
 ### validation data
 ### dropout
 드롭아웃은 각 계층마다 일정 비율의 뉴런을 임의로 정해 drop 시켜 나머지 뉴런들만 학습하도록 하는 방법입니다. 네트워크 내부에서 이루어지는 ensemble learning 이라고 생각해도 좋습니다. 
-> ensenmble learning은 개별적으로 학습시킨 여러 모델의 출력을 종합해 추론하는 방식입니다. 뉴럴 네트워크를 개별적으로 학습시키고, 각 네트워크에 같은 input을 주어 나온 출력 뉴런 각각의 평균을 구한 다음 여기서 가장 큰 값을 정답으로 판정하면 되기 때문에 간단히 구현할 수 있습니다. 
-> $$1/N \sum_{i}^{N} output_i$$
+> `ensenmble learning`은 개별적으로 학습시킨 여러 모델의 출력을 종합해 추론하는 방식입니다. 뉴럴 네트워크를 개별적으로 학습시키고, 각 네트워크에 같은 input을 주어 나온 출력 뉴런 각각의 평균을 구한 다음 여기서 가장 큰 값을 정답으로 판정하면 되기 때문에 간단히 구현할 수 있습니다. 
+> * $$1/N \sum_{i}^{N} output_i$$
 
 ![over_2]({{ site.url }}/img/dropout.png)
 
 
 ### L2 regularization
-가장 일반적으로 사용하는 regularization 기법으로 가중치가 클 수록 큰 패널티를 부과하여 오버피팅을 억제하는 방법입니다. 패널티를 부과하는 방법은 Loss function에 $$ 1/2 \lambda \sum W^2 $$ 을 더해줍니다. 이 값을 미분한 값은 $$ \lambda W$$이고 오차역전파를 통해 계산한 기울기에 $$\lambda W$$를 더하게 되어 가중치 값이 그만큼 보정됩니다. 
+가장 일반적으로 사용하는 regularization 기법으로 가중치가 클 수록 큰 패널티를 부과하여 오버피팅을 억제하는 방법입니다. 패널티를 부과하는 방법은 loss function에 $$ 1/2 \lambda \sum W^2 $$ 을 더해줍니다. 이 값을 미분한 값은 $$ \lambda W$$이고 오차역전파를 통해 계산한 기울기에 $$\lambda W$$를 더하게 되어 가중치 값이 그만큼 보정됩니다. 
+* $$ L = 1/2m \sum_{i=1}^{m} (h_\theta(x^{(i)})-y^{(i)})^2 + 1/2 \lambda \sum W^2 $$ 
+
 참고로 L1 regularization은 loss function에 $$\lambda|W|$$ 을 더해주는 방법입니다. 일반적으로는 L2 regularization을 사용하는 방법이 좋은 결과를 얻을 수 있다고 알려져 있습니다.
 
