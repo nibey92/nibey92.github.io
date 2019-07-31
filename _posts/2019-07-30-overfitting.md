@@ -56,8 +56,11 @@ bias와 variance를 줄이는 것이 딥러닝의 목표라 할 수 있습니다
 보통 epoch 수 만큼 반복해서 학습합니다. 그러나 계속 반복학습하게 되면 어느시점에서 overtrainig이 일어나게 됩니다. validation accuracy가 더이상 올라가지 않을 때 학습을 멈추는 것을 early stopping이라고 합니다. 
 
 #### Keras
-Keras에서는 이 것을 코드로 구현해 놓았습니다.
+Keras에서는 라이브러리를 이용하여 쉽게 구현 할 수 있도록 해놓았습니다.
+`EarlyStopping` 콜백을 사용하면 정해진 epoch 동안 모니터링 지표가 향상되지 않을 때 훈련을 중지할 수 있습니다. 일반적으로 이 콜백은 훈련하는 동안 모델을 계속 저장해주는 `ModelCheckpoint`와 함께 사용합니다. (가장 좋은 모델만 저장 가능)
 {% highlight ruby %} 
+    # 1 epoch 동안 valldation accuracy가 더 향상되지 않으면 중단
+    EarlyStopping(monitor='val_acc', patience=1) 
     # set checkpointer and save model
     checkpointer = ModelCheckpoint(filepath=save_path+'model.hdf5', verbose=1, save_best_only=True)
 {% endhighlight %}
