@@ -31,6 +31,8 @@ over fitting을 좀더 자세히 알기 위해서는 bias와 varience에 대한 
 
 bias와 variance를 줄이는 것이 딥러닝의 목표라 할 수 있습니다. 이때 `bias`가 높아진다는 것은 `underfitting`이 일어나는 것이고 `variance`가 높아진다는 것은 `overfitting`이 일어나는 것이라 할 수 있습니다. 또한 `bias와 variace`는 밑에 그림에서 볼 수 있듯 `trade off` 관계를 가지고 있습니다.
 ![over_2]({{ site.url }}/img/tradeoff.png)
+>A Modern Take on the Bias-Variance Tradeoff in Neural Networks
+
 정리하자면
 * 높은 bias = 낮은 variance = under fitting
 * 높은 variance = 낮은 bias = over fitting
