@@ -29,4 +29,55 @@ comments: true
 
 ## Forward Propagation
 
+역전파를 계산하기 전에 먼저 순전파를 진행하여 딥러닝이 학습하는 순서를 먼저 알아봅시다. x, W, U, 실제값 y는 모두 상수입니다. 그림에서 모든 값들을 표시하였습니다. 이 값들을 코드에 먼저 초기값으로 적어놓습니다.
+{% highlight ruby %} 
+import numpy as np
 
+x1= 0.1 
+x2= 0.2
+
+W11 = 0.3 
+W21 = 0.25
+W12 = 0.4 
+W22 = 0.35
+
+U11 = 0.45
+U21 = 0.4
+U12 = 0.7
+U22 = 0.6
+
+y1 = 0.4
+y2 = 0.6
+
+{% endhighlight %}
+
+이제 차례대로 각 층에서의 값들을 계산해봅니다. 
+#### 은닉층
+$$ z_1 = W_11*x_1 + W_21*x_2 = 0.08 $$
+$$ z_2 = W_12*x_1 + W_22*x_2 = 0.11 $$
+$$ h_1 = sigmoid(z_1) = 0.52 $$
+$$ h_2 = sigmoid(z_2) = 0.53 $$
+
+코드로 간단히 구현하고 계산해봅니다.
+{% highlight ruby %} 
+z1 = x1*W11+x2*w21
+z2 = x1*W12+x2*W22
+h1 = sigmoid(z1)
+h2 = sigmoid(z2)
+
+print "------hidden layer--------"
+print "z1:",z1
+print "z2:",z2
+print "h1:",h1
+print "h2:",h2
+
+{% endhighlight %}
+
+코드 출력 결과는 다음과 같습니다.
+{% highlight ruby %} 
+------hidden layer--------
+z1: 0.08
+z2: 0.11
+h1: 0.519989340156
+h2: 0.527472304345
+{% endhighlight %}
