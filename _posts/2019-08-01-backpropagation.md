@@ -28,8 +28,9 @@ comments: true
 이번 역전파 예제에서는 인공 신경망에 존재하는 모든 가중치 W와 U에 대해서 역전파를 통해 업데이트하는 것을 목표로 합니다. 해당인공 신경망은 편향 b는 고려하지 않습니다.
 
 ## Forward Propagation
-
+![propa2]({{ site.url }}/img/propa2.PNG)
 역전파를 계산하기 전에 먼저 순전파를 진행하여 딥러닝이 학습하는 순서를 먼저 알아봅시다. x, W, U, 실제값 y는 모두 상수입니다. 그림에서 모든 값들을 표시하였습니다. 이 값들을 코드에 먼저 초기값으로 적어놓습니다.
+
 {% highlight ruby %} 
 import numpy as np
 
@@ -112,3 +113,7 @@ E: 0.0239719007517
 
 {% endhighlight %}
 
+## Back Propagation Step 1
+순전파가 입력층에서 출력층으로
+
+## Back Propagation Step 2
