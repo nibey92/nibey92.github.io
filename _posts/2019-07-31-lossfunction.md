@@ -24,6 +24,5 @@ comments: true
 $$y$$: 실제값 (0 or 1) 
 $$\hat{y}$$ : 예측값
 
-ht_1 = ht # hidden state, previous memory state Ct_1 = Ct # cell state, previous carry state {% endhighlight %}
 낮은 확률로 예측해서 맞추거나 높은 확률로 예측해서 틀리는 경우 loss가 더 큽니다. 이진 분류(Binary classification)의 경우 binary_crossentropy를 사용하며 다중 클래스 분류(Multi-class classification)의 경우  categorical_crossentropy를 사용합니다. 
 
