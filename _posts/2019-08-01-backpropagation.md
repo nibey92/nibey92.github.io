@@ -125,9 +125,9 @@ E: 0.0239719007517
 \frac{\partial o_1 }{\partial t_1} \times 
 \frac{\partial t_1}{\partial U_{11} } $$
 
-이렇게 풀어 쓰는 이유는 chain rule로 풀어쓴 우변에 세 항들을 쉽게 계산할수 있기 때문입니다. 우변의 세 항들을 차례대로 계산해 봅시다.
-* \frac{\partial E_{tot}}{\partial o_1}
-* 이 때 $$ E_tot = E_1 + E_2 = 1/2(y_1-o_1)^2 + 1/2(y_2-o_2)^2 $$,  $$ o_1 = sigmoid(t_1) $$
+이렇게 chain rule로 풀어쓰면 우변의 세 항들을 쉽게 계산할수 있습니다. 세 항들을 차례대로 계산해 봅시다.
+#### $$ \frac{\partial E_{tot}}{\partial o_1} $$
+** $$ E_tot = E_1 + E_2 = 1/2(y_1-o_1)^2 + 1/2(y_2-o_2)^2 $$,  $$ o_1 = sigmoid(t_1) $$ **
 따라서 미분하면
 * $$ \frac{\partial E_{tot}}{\partial o_1} = -1(y_1-o_1) $$
 ## Back Propagation Step 2
