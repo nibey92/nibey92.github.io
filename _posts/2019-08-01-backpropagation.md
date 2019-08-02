@@ -119,8 +119,8 @@ E: 0.0239719007517
 ## Back Propagation Step 1
 순전파가 입력층에서 출력층으로 향한다면 역전파는 반대로 출력층에서 입력층 방향으로 계산하면서 가중치를 업데이트해 갑니다. 먼저 출력층과 은닉층 사이의 가중치 U 를 업데이트하는 단계를 역전파 1단계, 은닉층과 입력층 사이의 가중치 W를 업데이트 하는 단계를 역전파 2단계라고 합시다. 
 
-우선 역전파 1단계를 진행하겠습니다. 역전파 1단계에서 업데이트해야 할 가중치는 $$U_{11}, U_{21}, U_{12}, U_{22}$$ 총 4개입니다. 역전파 1단계에서 사용되는 파라미터들을 정리하고 계산을 시작하면 좋습니다. 그림에 보듯이 역전파 1단계에서 사용되는 파라미터들은 h, t, o, y 그리고 가중치 U임을 알 수 있습니다. 먼저 $$U_{11}$$에 대해서 업데이트를 진행해보겠습니다. $$ \frack{\partial E_{tot}}{\partial U_{11}}$$을 계산하기 위해 chain rule에 따라서 다음과 같이 풀어씁니다.
-* $$\partial E_{tot}/\partial U_{11}$$ = $$\partial E_{tot}/\partial U_{11} \times \frac{\partial E_{tot}}{\partial o_1 \times \frac{\partial o_1 }{\partial t_1} \times \frac{\partial t_1}{\partial U_{11}}$$
+우선 역전파 1단계를 진행하겠습니다. 역전파 1단계에서 업데이트해야 할 가중치는 $$U_{11}, U_{21}, U_{12}, U_{22}$$ 총 4개입니다. 역전파 1단계에서 사용되는 파라미터들을 정리하고 계산을 시작하면 좋습니다. 그림에 보듯이 역전파 1단계에서 사용되는 파라미터들은 h, t, o, y 그리고 가중치 U임을 알 수 있습니다. 먼저 $$U_{11}$$에 대해서 업데이트를 진행해보겠습니다. $$ \frac{\partial E_{tot}}{\partial U_{11}}$$을 계산하기 위해 chain rule에 따라서 다음과 같이 풀어씁니다.
+* $$\partial E_{tot}/\partial U_{11} =$$ $$ \frac{\partial E_{tot}}{\partial U_{11}} \times \frac{\partial E_{tot}}{\partial o_1 \times \frac{\partial o_1 }{\partial t_1} \times \frac{\partial t_1}{\partial U_{11}}$$
 
 
 ## Back Propagation Step 2
