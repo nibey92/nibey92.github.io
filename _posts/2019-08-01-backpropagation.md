@@ -140,10 +140,10 @@ $$ o_1 = sigmoid(t_1) $$
 
 sigmoid 함수의 미분값은 f(x) \times (1-f(x)) 입니다. sigmoid 함수의 미분은 기억해 주는것이 좋습니다. 이를 이용하여 두번재 항의 미분을 계산하면 다음과 같습니다.
 
-$$ \frac{\partial o_1}}{\partial t_1} = o_1*(1-o_1) $$
+$$ \frac{\partial o_1}{\partial t_1} = o_1*(1-o_1) $$
 
 * $$ \frac{\partial t_1}{\partial U_{11} } $$
-$$ t_1 = U_{11}*h_1 + U_{21}*t_2
+$$ t_1 = U_{11}*h_1 + U_{21}*t_2 $$
 
 미분값은
 
