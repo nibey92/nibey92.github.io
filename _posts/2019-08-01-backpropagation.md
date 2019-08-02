@@ -143,7 +143,9 @@ $$ \frac{\partial o_1}{\partial t_1} = o_1*(1-o_1) $$
 
 마지막 항을 계산합니다.
 * $$ \frac{\partial t_1}{\partial U_{11} } $$
+
 $$ t_1 = U_{11} * h_1 + U_{21} * t_2 $$
+
 $$ \frac{\partial t_1}{\partial U_{11} } = h_1 $$
 
 우변의 모든 항을 계산 하였습니다. 이제 이 값을 모두 곱해주면 됩니다.
