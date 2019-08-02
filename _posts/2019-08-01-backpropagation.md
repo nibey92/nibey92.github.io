@@ -127,7 +127,8 @@ E: 0.0239719007517
 
 이렇게 chain rule로 풀어쓰면 우변의 세 항들을 쉽게 계산할수 있습니다. 세 항들을 차례대로 계산해 봅시다.
 #### $$ \frac{\partial E_{tot}}{\partial o_1} $$
-** $$ E_tot = E_1 + E_2 = 1/2(y_1-o_1)^2 + 1/2(y_2-o_2)^2 $$,  $$ o_1 = sigmoid(t_1) $$ **
+* $$ E_tot = E_1 + E_2 = 1/2(y_1-o_1)^2 + 1/2(y_2-o_2)^2 $$,  
+* $$ o_1 = sigmoid(t_1) $$ 
 따라서 미분하면
 * $$ \frac{\partial E_{tot}}{\partial o_1} = -1(y_1-o_1) $$
 ## Back Propagation Step 2
