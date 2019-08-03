@@ -250,7 +250,7 @@ $$\therefore \frac{\partial E_{2}}{\partial h_1} = −(y_2−o_2) \times o_2(1�
 따라서 첫번째 항을 정리하면 다음과 같이 나타낼 수 있습니다. 
 * $$\frac{\partial E_{tot}}{\partial h_1} = \frac{\partial E_{1}}{\partial h_1} + \frac{\partial E_{2}}{\partial h_1}$$
 
-$$ = \left −(y_1−o_1) \times o_1(1−o_1) \times U_{11} + \frac{\partial E_{2}}{\partial h_1} \right= −(y_2−o_2) \times o_2(1−o_2) \times U_{12} $$
+$$ = −(y_1−o_1) \times o_1(1−o_1) \times U_{11} + −(y_2−o_2) \times o_2(1−o_2) \times U_{12} $$
 
 
 
