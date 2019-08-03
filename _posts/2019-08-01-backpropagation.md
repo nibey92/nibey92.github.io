@@ -224,12 +224,29 @@ $$\frac{\partial E_{tot}}{\partial h_1} = \frac{\partial E_{1}}{\partial h_1} + 
 * $$\frac{\partial E_{1}}{\partial h_1} 
 =\frac{\partial E_{1}}{\partial o_1} \times
 \frac{\partial o_1}{\partial t_1} \times
-\frac{\partial t_1}{\partial h_1} \times$$
+\frac{\partial t_1}{\partial h_1}$$
+
+$$E_1 = \frac{1}{2}(y_1-o_1)^2$$
+
+$$o_1 = sigmoid(t_1)$$
+
+$$t_1 = h_1*U_{11} + h_2*U_{21} $$
+
+$$\therefore \frac{\partial E_{1}}{\partial h_1} = −(y_1−o_1) \times o_1(1−o_1) \times U_{11} $$
 
 * $$\frac{\partial E_{2}}{\partial h_1} 
 =\frac{\partial E_{2}}{\partial o_2} \times
 \frac{\partial o_2}{\partial t_2} \times
-\frac{\partial t_2}{\partial h_1} \times$$
+\frac{\partial t_2}{\partial h_1} $$
+
+$$E_2 = \frac{1}{2}(y_2-o_2)^2$$
+
+$$o_2 = sigmoid(t_2)$$
+
+$$t_2 = h_1*U_{12} + h_2*U_{22} $$
+
+$$\therefore \frac{\partial E_{2}}{\partial h_1} = −(y_2−o_2) \times o_2(1−o_2) \times U_{22} $$
+
 
 
 
