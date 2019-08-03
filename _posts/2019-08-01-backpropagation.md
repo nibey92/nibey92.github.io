@@ -174,28 +174,28 @@ $$ = 0.43703857 $$
 \frac{\partial o_1 }{\partial t_1} \times 
 \frac{\partial t_1}{\partial U_{11} } $$
 
-$$\rightU_{21}^{+}=0.43703857$$
+$$\rightarrow U_{21}^{+}=0.43703857$$
 
 * $$ \frac{\partial E_{tot}}{\partial U_{21} } = 
 \frac{\partial E_{tot}}{\partial o_1} \times 
 \frac{\partial o_1 }{\partial t_1} \times 
 \frac{\partial t_1}{\partial U_{21} } $$
 
-$$\right U_{21}^{+}=0.38685205$$
+$$\rightarrow U_{21}^{+}=0.38685205$$
 
 * $$ \frac{\partial E_{tot}}{\partial U_{12} } = 
 \frac{\partial E_{tot}}{\partial o_2} \times 
 \frac{\partial o_2 }{\partial t_2} \times 
 \frac{\partial t_1}{\partial U_{12} } $$
 
-$$\right U_{21}^{+}=0.69629578$$
+$$\rightarrow U_{21}^{+}=0.69629578$$
 
 * $$ \frac{\partial E_{tot}}{\partial U_{22} } = 
 \frac{\partial E_{tot}}{\partial o_2} \times 
 \frac{\partial o_2 }{\partial t_2} \times 
 \frac{\partial t_2}{\partial U_{22} } $$
 
-$$\right U_{21}^{+}=0.59624247$$
+$$\rightarrow U_{21}^{+}=0.59624247$$
 
 ## Back Propagation Step 2
 1단계를 완료하였다면 이제 입력층 방향으로 이동하며 다시 계산을 이어갑니다. 위의 그림에서 빨간색 화살표는 순전파의 정반대 방향인 역전파의 방향을 보여줍니다. 현재 인공 신경망은 은닉층이 1개밖에 없으므로 이번 단계가 마지막 단계입니다. 하지만 은닉층이 더 많은 경우라면 입력층 방향으로 한 단계씩 계속해서 계산해가야 합니다.
