@@ -265,5 +265,5 @@ $$ = −(y_1−o_1)*o_1(1−o_1)*U_{11} + −(y_2−o_2)*o_2(1−o_2)*U_{12} $$
 \frac{\partial h_1 }{\partial z_1} \times 
 \frac{\partial z_1}{\partial W_{11} } $$
 
-=  \left −(y_1−o_1)*o_1(1−o_1)*U_{11} + −(y_2−o_2)*o_2(1−o_2)*U_{12} < \right>
+$$ =  \left −(y_1−o_1)*o_1(1−o_1)*U_{11} + −(y_2−o_2)*o_2(1−o_2)*U_{12} < \right>$$
 
