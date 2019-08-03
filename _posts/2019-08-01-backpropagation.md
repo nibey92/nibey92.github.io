@@ -291,25 +291,25 @@ $$ = 0.29959556 $$
 \frac{\partial h_1 }{\partial z_1} \times 
 \frac{\partial z_1}{\partial W_{11} $$
 
-$$ \right W_{11}^{+}=0.29959556 $$
+$$ \rightarrow W_{11}^{+}=0.29959556 $$
 
 * $$ \frac{\partial E_{tot}}{\partial W_{21} } = 
 \frac{\partial E_{tot}}{\partial h_1} \times 
 \frac{\partial h_1 }{\partial z_1} \times 
 \frac{\partial z_1}{\partial W_{21} } $$
 
-$$ \right W_{21}^{+}=0.24919112 $$
+$$ \rightarrow W_{21}^{+}=0.24919112 $$
 
 * $$ \frac{\partial E_{tot}}{\partial W_{12} } = 
 \frac{\partial E_{tot}}{\partial h_2} \times 
 \frac{\partial h_2 }{\partial z_2} \times 
 \frac{\partial z_1}{\partial W_{12} } $$
 
-$$\right W_{12}^{+}=0.39964496 $$
+$$\rightarrow W_{12}^{+}=0.39964496 $$
 
 * $$ \frac{\partial E_{tot}}{\partial W_{22} } = 
 \frac{\partial E_{tot}}{\partial h_2} \times 
 \frac{\partial h_2 }{\partial z_2} \times 
 \frac{\partial z_2}{\partial W_{22} } $$
 
-$$\right W_{22}^{+}=0.34928991 $$
+$$\rightarrow W_{22}^{+}=0.34928991 $$
