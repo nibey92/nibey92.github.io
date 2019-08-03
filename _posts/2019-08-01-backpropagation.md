@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Back Propagation
-excerpt: "역전파 이해하기"
+title: Propagation
+excerpt: "딥러닝의 학습과정을 살펴보자"
 categories: [deep learning]
 comments: true
 ---
