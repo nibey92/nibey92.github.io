@@ -30,7 +30,7 @@ comments: true
 
 #### 첫번째항
 
-$$\bullet \; \frac{\partial E_{tot}}{\partial o_1} $$
+$$\bullet \: \: \frac{\partial E_{tot}}{\partial o_1} $$
 
 $$ E_{tot} = E_1 + E_2 = \frac{1}{2}(y_1-o_1)^2 + \frac{1}{2}(y_2-o_2)^2 $$ 
 
@@ -39,14 +39,14 @@ $$ \therefore \frac{\partial E_{tot}}{\partial o_1} = -(y_1-o_1) $$
 #### 두번째항
 sigmoid 함수의 미분값은 $$ f(x) \times (1-f(x)) $$ 입니다. sigmoid 함수의 미분은 기억해 주는것이 좋습니다. 이를 이용하여 두번재 항의 미분을 계산하면 다음과 같습니다.
 
-$$ \bullet \:\: \frac{\partial o_1}{\partial t_1} $$
+$$ \bullet \; \; \frac{\partial o_1}{\partial t_1} $$
 
 $$ o_1 = sigmoid(t_1) $$ 
 
 $$ \therefore \frac{\partial o_1}{\partial t_1} = o_1*(1-o_1) $$
 
 #### 세번째항
-* $$ \centerdot \;\; \frac{\partial t_1}{\partial U_{11} } $$
+$$ \centerdot \;\; \frac{\partial t_1}{\partial U_{11} } $$
 
 $$ t_1 = U_{11} * h_1 + U_{21} * t_2 $$
 
