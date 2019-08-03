@@ -173,22 +173,33 @@ $$ = 0.43703857 $$
 \frac{\partial E_{tot}}{\partial o_1} \times 
 \frac{\partial o_1 }{\partial t_1} \times 
 \frac{\partial t_1}{\partial U_{11} } 
-=0.43703857$$
+
+\right
+U_{21}^{+}=0.43703857$$
+
 * $$ \frac{\partial E_{tot}}{\partial U_{21} } = 
 \frac{\partial E_{tot}}{\partial o_1} \times 
 \frac{\partial o_1 }{\partial t_1} \times 
 \frac{\partial t_1}{\partial U_{21} } 
-=0.38685205$$
+
+\right
+U_{21}^{+}=0.38685205$$
+
 * $$ \frac{\partial E_{tot}}{\partial U_{12} } = 
 \frac{\partial E_{tot}}{\partial o_2} \times 
 \frac{\partial o_2 }{\partial t_2} \times 
 \frac{\partial t_1}{\partial U_{12} } 
-=0.69629578$$
+
+\right
+U_{21}^{+}=0.69629578$$
+
 * $$ \frac{\partial E_{tot}}{\partial U_{22} } = 
 \frac{\partial E_{tot}}{\partial o_2} \times 
 \frac{\partial o_2 }{\partial t_2} \times 
 \frac{\partial t_2}{\partial U_{22} } 
-=0.59624247$$
+
+\right
+U_{21}^{+}=0.59624247$$
 
 ## Back Propagation Step 2
 1단계를 완료하였다면 이제 입력층 방향으로 이동하며 다시 계산을 이어갑니다. 위의 그림에서 빨간색 화살표는 순전파의 정반대 방향인 역전파의 방향을 보여줍니다. 현재 인공 신경망은 은닉층이 1개밖에 없으므로 이번 단계가 마지막 단계입니다. 하지만 은닉층이 더 많은 경우라면 입력층 방향으로 한 단계씩 계속해서 계산해가야 합니다.
@@ -270,3 +281,43 @@ $$ = 0.02243370+0.00997311 = 0.03240681$$
 $$ = 0.03240681$$ \times h_1(1-h_1) \times x_1  $$
 
 $$ = 0.03240681×0.24960043×0.1=0.00080888$$
+
+경사하강법을 통해 가중치를 업데이트 합니다.
+* $$W_{11}^{+} = W_{11} - \alpha * \frac{\partial E_{tot}}{\partial W_{11} } $$
+
+$$ = 0.2 - 0.5 * 0.00080888 $$
+
+$$ = 0.29959556 $$
+
+이와 같은 원리로 $$ W_{21}, W_{12}, W_{22} $$ 를 계산할 수 있습니다. 모두 정리하면,
+* $$ \frac{\partial E_{tot}}{\partial W_{11} } = 
+\frac{\partial E_{tot}}{\partial h_1} \times 
+\frac{\partial h_1 }{\partial z_1} \times 
+\frac{\partial z_1}{\partial W_{11} 
+
+\right
+W_{11}^{+}=0.29959556 $$
+
+* $$ \frac{\partial E_{tot}}{\partial W_{21} } = 
+\frac{\partial E_{tot}}{\partial h_1} \times 
+\frac{\partial h_1 }{\partial z_1} \times 
+\frac{\partial z_1}{\partial W_{21} } 
+
+\right
+W_{21}^{+}=0.24919112 $$
+
+* $$ \frac{\partial E_{tot}}{\partial W_{12} } = 
+\frac{\partial E_{tot}}{\partial h_2} \times 
+\frac{\partial h_2 }{\partial z_2} \times 
+\frac{\partial z_1}{\partial W_{12} } 
+
+\right
+W_{12}^{+}=0.39964496 $$
+
+* $$ \frac{\partial E_{tot}}{\partial W_{22} } = 
+\frac{\partial E_{tot}}{\partial h_2} \times 
+\frac{\partial h_2 }{\partial z_2} \times 
+\frac{\partial z_2}{\partial W_{22} } 
+
+\right
+W_{22}^{+}=0.34928991 $$
