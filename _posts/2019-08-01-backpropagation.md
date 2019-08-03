@@ -130,7 +130,7 @@ E: 0.0239719007517
 #### 첫째항
 * $$ \frac{\partial E_{tot}}{\partial o_1} $$
 
-$$ E_{tot} = E_1 + E_2 = frac{1}{2}(y_1-o_1)^2 + frac{1}{2}(y_2-o_2)^2 $$ 
+$$ E_{tot} = E_1 + E_2 = \frac{1}{2}(y_1-o_1)^2 + \frac{1}{2}(y_2-o_2)^2 $$ 
 
 $$ \frac{\partial E_{tot}}{\partial o_1} = -(y_1-o_1) $$
 
@@ -154,15 +154,13 @@ $$ \frac{\partial t_1}{\partial U_{11} } = h_1 $$
 * $$ \frac{\partial E_{tot}}{\partial U_{11} } = 
 \frac{\partial E_{tot}}{\partial o_1} \times 
 \frac{\partial o_1 }{\partial t_1} \times 
-\frac{\partial t_1}{\partial U_{11} } $$
-
-$$=-(y_1-o_1) \times o_1(1-o_1) \times h_1 $$
+\frac{\partial t_1}{\partial U_{11} } $$   $$=-(y_1-o_1) \times o_1(1-o_1) \times h_1 $$
 
 \begin{align}
-    a + b &= c 
-    
+    a + b &= c   
     a &= c - b
 \end{align}
+
 최종값의 모든 파라미터들은 상수기 때문에 값만 넣어서 계산하면 됩니다. 계산 결과는 다음과 같습니다.
 * $$ \frac{\partial E_{tot}}{\partial U_{11} } = -(y_1-o_1) \times o_1(1-o_1) \times h_1 = 0.02592286 $$
 
