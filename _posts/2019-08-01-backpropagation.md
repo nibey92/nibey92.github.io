@@ -167,6 +167,22 @@ $$ = 0.45 - 0.5 * 0.02592286 $$
 
 $$ = 0.43703857 $$
 
-이와 같은 원리로 $$ U_{11}, U_{21}, U_{12}, U_{22} $$ 를 계산할 수 있습니다.
+이와 같은 원리로 $$ U_{21}, U_{12}, U_{22} $$ 를 계산할 수 있습니다. 모두 정리하면,
+* $$ \frac{\partial E_{tot}}{\partial U_{11} } = 
+\frac{\partial E_{tot}}{\partial o_1} \times 
+\frac{\partial o_1 }{\partial t_1} \times 
+\frac{\partial t_1}{\partial U_{11} } $$
+* $$ \frac{\partial E_{tot}}{\partial U_{21} } = 
+\frac{\partial E_{tot}}{\partial o_1} \times 
+\frac{\partial o_1 }{\partial t_1} \times 
+\frac{\partial t_1}{\partial U_{21} } $$
+* $$ \frac{\partial E_{tot}}{\partial U_{12} } = 
+\frac{\partial E_{tot}}{\partial o_2} \times 
+\frac{\partial o_2 }{\partial t_2} \times 
+\frac{\partial t_1}{\partial U_{12} } $$
+* $$ \frac{\partial E_{tot}}{\partial U_{22} } = 
+\frac{\partial E_{tot}}{\partial o_2} \times 
+\frac{\partial o_2 }{\partial t_2} \times 
+\frac{\partial t_2}{\partial U_{22} } $$
 
 ## Back Propagation Step 2
