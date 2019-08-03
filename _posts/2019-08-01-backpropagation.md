@@ -128,11 +128,11 @@ E: 0.0239719007517
 
 이렇게 chain rule로 풀어쓰면 우변의 세 항들을 쉽게 계산할수 있습니다. 세 항들을 차례대로 계산해 봅시다.
 #### 첫째항
-* $$ \frac{\partial E_{tot}}{\partial o_1} $$
+$$ \frac{\partial E_{tot}}{\partial o_1} $$
 
-$$ E_{tot} = E_1 + E_2 = \frac{1}{2}(y_1-o_1)^2 + \frac{1}{2}(y_2-o_2)^2 $$ 
+$$ \centerdot E_{tot} = E_1 + E_2 = \frac{1}{2}(y_1-o_1)^2 + \frac{1}{2}(y_2-o_2)^2 $$ 
 
-$$ \frac{\partial E_{tot}}{\partial o_1} = -(y_1-o_1) $$
+$$ \therefore \frac{\partial E_{tot}}{\partial o_1} = -(y_1-o_1) $$
 
 #### 둘째항
 sigmoid 함수의 미분값은 $$ f(x) \times (1-f(x)) $$ 입니다. sigmoid 함수의 미분은 기억해 주는것이 좋습니다. 이를 이용하여 두번재 항의 미분을 계산하면 다음과 같습니다.
@@ -160,11 +160,8 @@ $$=-(y_1-o_1) \times o_1(1-o_1) \times h_1 $$
 
 $$= 0.02592286 $$
 
-
-* $$ \frac{\partial E_{tot}}{\partial U_{11} } = -(y_1-o_1) \times o_1(1-o_1) \times h_1 = 0.02592286 $$
-
 이제 앞에서 배웠던 경사하강법을 통해 가중치를 업데이트 하면 됩니다. 하이퍼파라미터에 해당하는 learning rate $$\alpha$$는 0.5라고 가정합니다. 그러면 업데이트되는 가중치 $$U_{11}^{+}$$는
-* $$U_{11}^{+} = U_{11} - \alpha * \frac{\partial E_{tot}}{\partial U_{11} } 
+* $$U_{11}^{+} = U_{11} - \alpha * \frac{\partial E_{tot}}{\partial U_{11} } $$
 
 $$= 0.45 - 0.5 * 0.02592286 $$
 
