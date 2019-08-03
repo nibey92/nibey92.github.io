@@ -193,9 +193,9 @@ $$ = 0.43703857 $$
 ## Back Propagation Step 2
 1단계를 완료하였다면 이제 입력층 방향으로 이동하며 다시 계산을 이어갑니다. 위의 그림에서 빨간색 화살표는 순전파의 정반대 방향인 역전파의 방향을 보여줍니다. 현재 인공 신경망은 은닉층이 1개밖에 없으므로 이번 단계가 마지막 단계입니다. 하지만 은닉층이 더 많은 경우라면 입력층 방향으로 한 단계씩 계속해서 계산해가야 합니다.
 
-번 단계에서 계산할 가중치는 $$ W_{11}, W_{21}, W_{12}, W_{22}$$ 입니다. 마찬가지로 원리 자체는 동일하므로 우선 $$ W_{11} $$에 대해서 먼저 업데이트를 진행해보겠습니다. 역전파 1단계에서와 마찬가지로 경사 하강법을 수행하려면 가중치 W_{11}을 업데이트해야 하고, 업데이트 하기 위해서는 $$\frac{\partial E_{tot}}{\partial W_{11}}$$를 계산해야 합니다. 
+이번 단계에서 계산할 가중치는 $$ W_{11}, W_{21}, W_{12}, W_{22}$$ 입니다. 우선 $$W_{11}$$에 대해서 먼저 업데이트를 진행해보겠습니다. 역전파 1단계에서와 마찬가지로 경사 하강법을 수행하려면 가중치 $$W_{11}$$을 업데이트해야 하고, 업데이트 하기 위해서는 $$\frac{\partial E_{tot}}{\partial W_{11}}$$를 계산해야 합니다. 
 
-위에서와 마찬가지로 $$\frac{\partial E_{tot}}{\partial W_{11}}$$를 계산하기 위해서 chain rule을 사용합니다. 눈치가 빠르신 분들은 역전파 1단계에서의 chain rule의 파라미터 $$ o_1, t_1, U_{11} $$ 이 역전파 2단계에서 각각 $$ h_1, z_1, W_{11}$$ 로 치환되었다는 것을 알 수 있습니다. 따라서 역전파 1단계에서 chain rule을 그대로 쓰면
+위에서와 마찬가지로 $$\frac{\partial E_{tot}}{\partial W_{11}}$$를 계산하기 위해서 chain rule을 사용합니다. 눈치가 빠르신 분들은 역전파 1단계에서의 chain rule의 파라미터 $$ o_1, t_1, U_{11} $$ 가 역전파 2단계에서 각각 $$ h_1, z_1, W_{11}$$ 로 치환되었다는 것을 알 수 있습니다. 따라서 역전파 1단계에서 chain rule을 그대로 쓰면
 
 * $$ \frac{\partial E_{tot}}{\partial U_{11} } = 
 \frac{\partial E_{tot}}{\partial o_1} \times 
@@ -209,4 +209,30 @@ $$ = 0.43703857 $$
 \frac{\partial h_1 }{\partial z_1} \times 
 \frac{\partial z_1}{\partial W_{11} } $$
 
-이와 같은 식을 얻을 수 있습니다. 다만 역전파 1단계와는 달리 우변의 첫번째 항인 $$\frac{\partial E_{tot}}{\partial h_1}$$ 에 대해서 추가적으로 계산을 해봅시다.
+이와 같은 식을 얻을 수 있습니다. 다만 역전파 1단계와는 달리 우변의 첫번째 항인 $$\frac{\partial E_{tot}}{\partial h_1}$$ 에 대해서 추가적으로 계산을 해주어야 합니다. 
+
+#### 첫번째항
+
+* $$ \frac{\partial E_{tot}}{\partial h_1} $$
+
+이 식은 다음과 같이 풀어쓸 수 있습니다. 
+
+$$\frac{\partial E_{tot}}{\partial h_1} = \frac{\partial E_{1}}{\partial h_1} + \frac{\partial E_{2}}{\partial h_1}$$
+
+우변의 두 항에 대해서 각각 chain rule을 사용하여 풀어써봅니다.
+
+* $$\frac{\partial E_{1}}{\partial h_1} 
+=\frac{\partial E_{1}}{\partial o_1} \times
+\frac{\partial o_1}{\partial t_1} \times
+\frac{\partial t_1}{\partial h_1} \times$$
+
+* $$\frac{\partial E_{2}}{\partial h_1} 
+=\frac{\partial E_{2}}{\partial o_2} \times
+\frac{\partial o_2}{\partial t_2} \times
+\frac{\partial t_2}{\partial h_1} \times$$
+
+
+
+
+
+
