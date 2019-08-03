@@ -30,9 +30,9 @@ comments: true
 
 #### 첫번째항
 
-$$ \bullet \qquad \frac{\partial E_{tot}}{\partial o_1} 
+$$ \bullet \qquad \frac{\partial E_{tot}}{\partial o_1} $$
 
-$$ E_{tot} = E_1 + E_2 = \frac{1}{2}(y_1-o_1)^2 + \frac{1}{2}(y_2-o_2)^2 
+$$ E_{tot} = E_1 + E_2 = \frac{1}{2}(y_1-o_1)^2 + \frac{1}{2}(y_2-o_2)^2 $$
 
 $$ \therefore \frac{\partial E_{tot}}{\partial o_1} = -(y_1-o_1) $$
 
@@ -47,7 +47,7 @@ $$ \therefore \frac{\partial o_1}{\partial t_1} = o_1*(1-o_1) $$
 
 #### 세번째항
 
-$$ \bullet \; \frac{\partial t_1}{\partial U_{11} } $$
+$$ \bullet \quad \frac{\partial t_1}{\partial U_{11} } $$
 
 $$ t_1 = U_{11} * h_1 + U_{21} * t_2 $$
 
