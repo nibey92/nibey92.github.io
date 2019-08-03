@@ -209,17 +209,17 @@ $$ = 0.43703857 $$
 \frac{\partial h_1 }{\partial z_1} \times 
 \frac{\partial z_1}{\partial W_{11} } $$
 
-이와 같은 식을 얻을 수 있습니다. 다만 역전파 1단계와는 달리 우변의 첫번째 항인 $$\frac{\partial E_{tot}}{\partial h_1}$$ 에 대해서 추가적으로 계산을 해주어야 합니다. 
+이와 같은 식을 얻을 수 있습니다. 다만 역전파 1단계와는 달리 우변의 첫번째 항인 $$\frac{\partial E_{tot}}{\partial h_1}$$ 에 대해서 추가적으로 계산을 해주어야 합니다. 첫번째 항만 계산하면 두번째와 세번째 계산은 앞선 계산과 거의 동일합니다. 차근차근 풀어보도록 합시다.
 
 #### 첫번째항
 
 * $$ \frac{\partial E_{tot}}{\partial h_1} $$
 
-이 식은 다음과 같이 풀어쓸 수 있습니다. 
+이 항은 다음 두 값의 합으로 나타낼 수 있습니다.
 
 $$\frac{\partial E_{tot}}{\partial h_1} = \frac{\partial E_{1}}{\partial h_1} + \frac{\partial E_{2}}{\partial h_1}$$
 
-우변의 두 항에 대해서 각각 chain rule을 사용하여 풀어써봅니다.
+우변의 두 항에 대해서 각각 chain rule을 사용하여 풀어쓰고 값을 계산해 봅시다.
 
 * $$\frac{\partial E_{1}}{\partial h_1} 
 =\frac{\partial E_{1}}{\partial o_1} \times
@@ -245,10 +245,12 @@ $$o_2 = sigmoid(t_2)$$
 
 $$t_2 = h_1*U_{12} + h_2*U_{22} $$
 
-$$\therefore \frac{\partial E_{2}}{\partial h_1} = −(y_2−o_2) \times o_2(1−o_2) \times U_{22} $$
+$$\therefore \frac{\partial E_{2}}{\partial h_1} = −(y_2−o_2) \times o_2(1−o_2) \times U_{12} $$
 
+따라서 첫번째 항을 정리하면 다음과 같이 나타낼 수 있습니다. 
+* $$\frac{\partial E_{tot}}{\partial h_1} = \frac{\partial E_{1}}{\partial h_1} + \frac{\partial E_{2}}{\partial h_1}$$
 
-
+$$ = \left −(y_1−o_1) \times o_1(1−o_1) \times U_{11} + \frac{\partial E_{2}}{\partial h_1} \right= −(y_2−o_2) \times o_2(1−o_2) \times U_{12} $$
 
 
 
