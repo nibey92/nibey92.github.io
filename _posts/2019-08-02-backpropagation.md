@@ -30,7 +30,7 @@ comments: true
 
 #### 첫번째항
 
-$$\bullet \frac{\partial E_{tot}}{\partial o_1} $$
+$$\bullet \; \frac{\partial E_{tot}}{\partial o_1} $$
 
 $$ E_{tot} = E_1 + E_2 = \frac{1}{2}(y_1-o_1)^2 + \frac{1}{2}(y_2-o_2)^2 $$ 
 
