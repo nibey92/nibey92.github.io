@@ -61,7 +61,7 @@ $$ \therefore \frac{\partial t_1}{\partial U_{11} } = h_1 $$
 \frac{\partial o_1 }{\partial t_1} \times 
 \frac{\partial t_1}{\partial U_{11} } $$  
 
-$$ \qquad \qquad \qquad \qquad =-(y_1-o_1) \times o_1(1-o_1) \times h_1 $$
+$$=-(y_1-o_1) \times o_1(1-o_1) \times h_1 $$
 
 $$= 0.02592286 $$
 
