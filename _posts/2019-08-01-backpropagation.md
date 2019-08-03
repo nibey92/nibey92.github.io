@@ -290,7 +290,7 @@ $$ = 0.29959556 $$
 * $$ \frac{\partial E_{tot}}{\partial W_{11} } = 
 \frac{\partial E_{tot}}{\partial h_1} \times 
 \frac{\partial h_1 }{\partial z_1} \times 
-\frac{\partial z_1}{\partial W_{11} $$
+\frac{\partial z_1}{\partial W_{11} } $$
 
 $$ \rightarrow W_{11}^{+}=0.29959556 $$
 
