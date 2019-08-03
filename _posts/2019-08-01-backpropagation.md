@@ -171,18 +171,22 @@ $$ = 0.43703857 $$
 * $$ \frac{\partial E_{tot}}{\partial U_{11} } = 
 \frac{\partial E_{tot}}{\partial o_1} \times 
 \frac{\partial o_1 }{\partial t_1} \times 
-\frac{\partial t_1}{\partial U_{11} } $$
+\frac{\partial t_1}{\partial U_{11} } 
+=0.43703857$$
 * $$ \frac{\partial E_{tot}}{\partial U_{21} } = 
 \frac{\partial E_{tot}}{\partial o_1} \times 
 \frac{\partial o_1 }{\partial t_1} \times 
-\frac{\partial t_1}{\partial U_{21} } $$
+\frac{\partial t_1}{\partial U_{21} } 
+=0.38685205$$
 * $$ \frac{\partial E_{tot}}{\partial U_{12} } = 
 \frac{\partial E_{tot}}{\partial o_2} \times 
 \frac{\partial o_2 }{\partial t_2} \times 
-\frac{\partial t_1}{\partial U_{12} } $$
+\frac{\partial t_1}{\partial U_{12} } 
+=0.69629578$$
 * $$ \frac{\partial E_{tot}}{\partial U_{22} } = 
 \frac{\partial E_{tot}}{\partial o_2} \times 
 \frac{\partial o_2 }{\partial t_2} \times 
-\frac{\partial t_2}{\partial U_{22} } $$
+\frac{\partial t_2}{\partial U_{22} } 
+=0.59624247$$
 
 ## Back Propagation Step 2
