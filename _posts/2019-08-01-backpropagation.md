@@ -131,7 +131,7 @@ E: 0.0239719007517
 
 * $$ \frac{\partial E_{tot}}{\partial o_1} $$
 
-$$ \centerdot   E_{tot} = E_1 + E_2 = \frac{1}{2}(y_1-o_1)^2 + \frac{1}{2}(y_2-o_2)^2 $$ 
+$$ E_{tot} = E_1 + E_2 = \frac{1}{2}(y_1-o_1)^2 + \frac{1}{2}(y_2-o_2)^2 $$ 
 
 $$ \therefore \frac{\partial E_{tot}}{\partial o_1} = -(y_1-o_1) $$
 
@@ -141,14 +141,14 @@ sigmoid 함수의 미분값은 $$ f(x) \times (1-f(x)) $$ 입니다. sigmoid 함
 
 $$ o_1 = sigmoid(t_1) $$ 
 
-$$ \frac{\partial o_1}{\partial t_1} = o_1*(1-o_1) $$
+$$ \therefore \frac{\partial o_1}{\partial t_1} = o_1*(1-o_1) $$
 
 #### 셋째항
 * $$ \frac{\partial t_1}{\partial U_{11} } $$
 
 $$ t_1 = U_{11} * h_1 + U_{21} * t_2 $$
 
-$$ \frac{\partial t_1}{\partial U_{11} } = h_1 $$
+$$ \therefore \frac{\partial t_1}{\partial U_{11} } = h_1 $$
 
 우변의 모든 항을 계산 하였습니다. 이제 이 값을 모두 곱해주면 됩니다. 최종값의 모든 파라미터들은 상수기 때문에 값만 넣어서 계산하면 됩니다. 계산 결과는 다음과 같습니다.
 
@@ -164,7 +164,9 @@ $$= 0.02592286 $$
 이제 앞에서 배웠던 경사하강법을 통해 가중치를 업데이트 하면 됩니다. 하이퍼파라미터에 해당하는 learning rate $$\alpha$$는 0.5라고 가정합니다. 그러면 업데이트되는 가중치 $$U_{11}^{+}$$는
 * $$U_{11}^{+} = U_{11} - \alpha * \frac{\partial E_{tot}}{\partial U_{11} } $$
 
-$$= 0.45 - 0.5 * 0.02592286 $$
+$$ = 0.45 - 0.5 * 0.02592286 $$
+
+$$ &= 0.43703857 $$
 
 이와 같은 원리로 $$ U_{11}, U_{21}, U_{12}, U_{22} $$ 를 계산할 수 있습니다.
 
