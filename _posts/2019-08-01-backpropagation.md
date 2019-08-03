@@ -157,10 +157,10 @@ $$ \frac{\partial t_1}{\partial U_{11} } = h_1 $$
 \frac{\partial t_1}{\partial U_{11} } $$
 
 $$=-(y_1-o_1) \times o_1(1-o_1) \times h_1 $$
+
 \begin{align}
     a + b &= c 
-\end{align}
-\begin{align}
+    
     a &= c - b
 \end{align}
 최종값의 모든 파라미터들은 상수기 때문에 값만 넣어서 계산하면 됩니다. 계산 결과는 다음과 같습니다.
