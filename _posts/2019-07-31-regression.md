@@ -28,8 +28,6 @@ comments: true
 
 위의 수식은 단순선형회귀(Simple Linear Regression Analysis)의 수식을 보여줍니다. 여기서 W를 ``가중치(weight)``, b를 ``편향(bias)`` 이라고 합니다.
 
-단순선형회귀에서는 x의 개수가 '집의크기' 1개입니다. 그래프에서
-
 ### Multiple Linear Regression Analysis
 
 * $$ y = W_1x_1 + W_2x_2 + .... W_nx_n +b $$
@@ -44,4 +42,8 @@ comments: true
 
 ## Matrix
 
-아래 그림을 봅시다 좌표의 개수는 (1,2), (2,4), (4,3) (5,4) 총 네개가 있습니다. 이차좌표평면이고 집값을 결정하는 x 요인은 하나이므로 feature의개수는 한개 입니다. 
+아래 그림을 봅시다 좌표의 개수는 (1,2), (2,4), (4,3) (5,4) 총 네개가 있습니다. 이차좌표평면이고 집값을 결정하는 x 요인은 하나이므로 feature의개수는 1개 입니다. 또한 sample은 총 4개가 주어졌습니다.
+![graph]({{ site.url }}/img/regression-graph.PNG)
+
+
+
