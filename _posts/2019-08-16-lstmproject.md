@@ -98,7 +98,7 @@ LSTM은 연속적인 데이터를 처리하는데 효과적입니다. 이전 데
 
 ### Model development
 모델 구현 코드는 [깃허브](https://github.com/yebiny/RNN_forCluster/tree/master/5-Model)에 정리해 놓았습니다. 
-)
+
 #### Classify
 
 ![project-7]({{ site.url }}/img/project-10.PNG)
