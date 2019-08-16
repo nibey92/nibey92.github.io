@@ -44,13 +44,13 @@ comments: true
 
 ![project-5]({{ site.url }}/img/project-5.PNG)
 
-## 데이터 전처리 
+## Data pre processing
 
-### 데이터 개수 
-### 데이터 밸런스
+### Data format 
+### Unbalnced data
 
-### 인풋 데이터 
-#### 구성입자의 개수
+### Input shape
+#### number of particles 
 
 구성입자의 개수는 2개부터 최대 50개 까지 
 50 개 이하이면 0으로 패딩
@@ -69,19 +69,17 @@ PID는 one-hot-encoding을 사용하였습니다.
 ![project-6]({{ site.url }}/img/project-6.PNG)
 
 
-### 아웃풋 데이터
+### Output shape
 
 
 
-## 모델 생성
+## Model
 
-### 모델 선정
-
-#### 데이터 특성
+### Data feature
 * 한개의 클러스터는 여러개의 구성입자로 이루어져 있고 이는 벡터로 표현할 수 있습니다.
 * 구성입자 하나만을 가지고 특정입자를 재구성할 수 없고 구성입자 전체의 정보를 확인해야 합니다.
 
 **$$\rightarrow$$ 이러한 데이터의 특성을 가장 잘 반영할 수 있는 모델로 `LSTM`을 사용하기로 하였습니다**
 > [LSTM](https://wikidocs.net/37406)
 
-## 결과
+## Results
