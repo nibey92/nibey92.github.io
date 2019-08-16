@@ -36,7 +36,7 @@ comments: true
 ![project-3]({{ site.url }}/img/project-3.PNG)
 
 ## 연구 방법 
-###문제 분류 
+### 문제 분류 
 #### Classification
 * 특정입자가 존재했던 클러스터인지 아닌지 판단하는 `분류문제`
 
