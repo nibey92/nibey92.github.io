@@ -91,8 +91,8 @@ PID는 one-hot-encoding을 사용하였습니다.
 * 한개의 클러스터는 여러개의 구성입자로 이루어져 있고 이는 벡터로 표현할 수 있습니다.
 * 구성입자 하나만을 가지고 특정입자를 재구성할 수 없고 구성입자 전체의 정보를 확인해야 합니다.
 
-**$$\rightarrow$$ 이러한 데이터의 특성을 가장 잘 반영할 수 있는 모델로 [LSTM](https://wikidocs.net/37406)을 사용하기로 하였습니다**
-> [LSTM](https://wikidocs.net/37406)
+**$$\rightarrow$$ 이러한 데이터의 특성을 가장 잘 반영할 수 있는 모델로 [LSTM](https://yebiny.github.io/articles/2019-07/lstm)을 사용하기로 하였습니다**
+> [LSTM](https://yebiny.github.io/articles/2019-07/lstm)
 LSTM은 연속적인 데이터를 처리하는데 효과적입니다. 이전 데이터를 기억하여 다음 데이터에 반영하기 때문에 클러스터 전체 입자를 고려하여 판단을 내려야 하는 이번 연구목적에 잘 부합하는 모델입니다. 
 
 
