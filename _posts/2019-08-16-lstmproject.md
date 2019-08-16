@@ -10,6 +10,8 @@ comments: true
 
 ## Introduction
 
+![project-1]({{ site.url }}/img/project-1.PNG)
+
 ### Point
 * `특정입자`에 대한 연구를 위해선 특정 입자가 존재하는 데이터 클러스터를 사용해야 합니다.
 * 그러나 대부분의 입자들은 검출기 영역에 도달하기 전에 붕괴합니다.
