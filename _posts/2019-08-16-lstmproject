@@ -2,12 +2,13 @@
 layout: post
 title: LSTM을 이용한 데이터 클러스터 분석
 excerpt: "LSTM을 이용한 데이터 클러스터 분석"
-categories: [Project]
+categories: [project]
 comments: true
 ---
 
-## 데이터 소개
+> ddd ??
 
+## 데이터 소개
 
 ## Introduction
 
@@ -27,10 +28,8 @@ comments: true
 * 구성입자의 개수 N에 대해 $$\sum^{N-1}_{i=1}i$$ 번의 계산을 수행하여 많은시간과 불필요한 작업이 수반된다.
 * 특정입자를 재구성 한 후엔 단순한 cut을 주어 정확도가 떨어진다.
 
-![project-2]({{ site.url }}/img/project-3.PNG)
+![project-3]({{ site.url }}/img/project-3.PNG)
 * Deep Neural Network를 이용하여 계산시간을 효과적으로 단축하고 정확도를 크게 향상 시킬 것으로 기대한다.
-
-* **트**  *트*
 
 **ㅇ**
 
