@@ -51,6 +51,8 @@ comments: true
 ## Data pre-processing
 
 ### Data format 
+#### number of data
+#### unbalanced data
 
 ### Input shape
 
