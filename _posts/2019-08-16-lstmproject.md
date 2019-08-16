@@ -57,7 +57,7 @@ comments: true
 
 #### feature
 
-![project-7]({{ site.url }}/img/project-7.PNG)
+![project-7]({{ site.url }}/img/project-7.png)
 
 #### one-hot encoding
 
