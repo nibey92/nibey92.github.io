@@ -103,9 +103,9 @@ PID는 one-hot-encoding을 사용하였습니다.
 ![project-7]({{ site.url }}/img/project-11.Png)
 
 ## Results
-![project-7]({{ site.url }}/img/project-12.Png)
+![project-7]({{ site.url }}/img/project-12.png)
 
-![project-7]({{ site.url }}/img/project-13.Png)
+![project-7]({{ site.url }}/img/project-13.png)
 
 ![project-7]({{ site.url }}/img/project-14.Png)
 
