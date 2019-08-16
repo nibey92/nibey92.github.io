@@ -25,12 +25,55 @@ comments: true
 * 특정입자를 재구성하는 기존 방법에서는 클러스터 내부의 모든 구성입자에 대해 두개씩 짝지어 모두 재구성 하였습니다.
 * 구성입자의 개수 N에 대해 $$ \sum^{N-1}_{i=1} i $$ 번의 계산을 수행하여 많은시간과 불필요한 작업이 수반됩니다.
 * 특정입자를 재구성 한 후엔 단순한 cut 조건을 주어 정확도가 떨어집니다.
+
 **$$\rightarrow$$ Deep Neural Network를 이용하여 계산시간을 효과적으로 단축하고 정확도를 크게 향상 시킬 것으로 기대합니다.
 
 ![project-3]({{ site.url }}/img/project-3.PNG)
 
 
 ## 연구 방법
+
+
+
+#### 문제 분류 
+1. 특정입자가 존재했던 클러스터인지 아닌지 판단하는 분류문제 -> Classify
+
+![project-4]({{ site.url }}/img/project-4.PNG)
+
+2. 특정입자를 재구성 할 클러스터 내 두개의 구성입자를 찾는 선택문제 -> Choice
+
+![project-5]({{ site.url }}/img/project-5.PNG)
+
+## 데이터 전처리 
+
+### 데이터 개수 
+### 데이터 밸런스
+
+### 인풋 데이터 
+#### 구성입자의 개수
+
+구성입자의 개수는 2개부터 최대 50개 까지 
+50 개 이하이면 0으로 패딩
+
+#### feature
+
+![project-7]({{ site.url }}/img/project-7.PNG)
+
+#### one-hot encoding
+
+PID는 one-hot-encoding을 사용하였습니다.
+
+따라서 총 feature의 개수는 8개 
+
+
+![project-6]({{ site.url }}/img/project-6.PNG)
+
+
+### 아웃풋 데이터
+
+
+
+## 모델 생성
 
 ### 모델 선정
 
@@ -41,16 +84,4 @@ comments: true
 **$$\rightarrow$$ 이러한 데이터의 특성을 가장 잘 반영할 수 있는 모델로 `LSTM`을 사용하기로 하였습니다**
 > [LSTM](https://wikidocs.net/37406)
 
-
-#### 문제 분류 
-1. 특정입자가 존재했던 클러스터인지 아닌지 판단하는 분류문제 -> Classify
-
-![project-4]({{ site.url }}/img/project-4.PNG)
-
-2. 특정입자를 재구성 할 클러스터 내 두개의 구성입자를 선택하는 문제 -> Choice
-
-![project-5]({{ site.url }}/img/project-5.PNG)
-
-## 데이터 전처리 
-## 모델 생성
 ## 결과
