@@ -69,9 +69,6 @@ PID는 one-hot-encoding을 사용하였습니다.
 
 따라서 총 feature의 개수는 8개 
 
-
-
-
 ### Output shape
 
 * 분류문제
@@ -91,12 +88,24 @@ PID는 one-hot-encoding을 사용하였습니다.
 
 **$$\rightarrow$$ 이러한 데이터의 특성을 가장 잘 반영할 수 있는 모델로 `LSTM`을 사용하기로 하였습니다**
 > [LSTM](https://wikidocs.net/37406)
+* LSTM은 연속적인 데이터를 처리하는데 효과적입니다. 이전 데이터를 기억하여 다음 데이터에 반영하기 때문에 클러스터 전체 입자를 고려하여 판단을 내려야 하는 이번 연구목적에 잘 부합하는 모델입니다. 
+
 
 ### Model development
-
+모델 구현 코드는 [깃허브]에 정리해 놓았습니다. [깃허브](https://github.com/yebiny/RNN_forCluster/tree/master/5-Model
+)
 #### Classify
 
+![project-7]({{ site.url }}/img/project-10.Png)
 
 #### Choice
 
+![project-7]({{ site.url }}/img/project-11.Png)
+
 ## Results
+![project-7]({{ site.url }}/img/project-12.Png)
+
+![project-7]({{ site.url }}/img/project-13.Png)
+
+![project-7]({{ site.url }}/img/project-14.Png)
+
