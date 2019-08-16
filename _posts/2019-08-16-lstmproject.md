@@ -73,11 +73,11 @@ PID는 one-hot-encoding을 사용하였습니다.
 
 * 분류문제
 
-![project-7]({{ site.url }}/img/project-8.Png)
+![project-7]({{ site.url }}/img/project-8.PNG)
 
 * 선택문제
 
-![project-7]({{ site.url }}/img/project-9.Png)
+![project-7]({{ site.url }}/img/project-9.PNG)
 
 
 ## Model
@@ -96,16 +96,16 @@ PID는 one-hot-encoding을 사용하였습니다.
 )
 #### Classify
 
-![project-7]({{ site.url }}/img/project-10.Png)
+![project-7]({{ site.url }}/img/project-10.PNG)
 
 #### Choice
 
-![project-7]({{ site.url }}/img/project-11.Png)
+![project-7]({{ site.url }}/img/project-11.PNG)
 
 ## Results
 ![project-7]({{ site.url }}/img/project-12.png)
 
 ![project-7]({{ site.url }}/img/project-13.png)
 
-![project-7]({{ site.url }}/img/project-14.Png)
+![project-7]({{ site.url }}/img/project-14.PNG)
 
