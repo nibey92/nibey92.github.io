@@ -6,13 +6,15 @@ categories: [project]
 comments: true
 ---
 
-## 데이터 소개
-
 ## Introduction
+
+* 유럽입자물리연구소(CERN)에서는 양성자 충돌을 통해 초당 100TB 이상의 데이터를 생성합니다. 
+* 가속기에서 생성되는 데이터들은 클러스터를 이루기도 합니다. 
+* 클러스터 안에 실제 연구에 사용할 수 있는 데이터가 포함 되어있는지가 중요합니다. 
 
 ![project-1]({{ site.url }}/img/project-1.PNG)
 
-### Point
+### Contents
 * `특정입자`에 대한 연구를 위해선 특정 입자가 존재하는 데이터 클러스터를 사용해야 합니다.
 * 그러나 대부분의 입자들은 검출기 영역에 도달하기 전에 붕괴합니다.
 * 따라서 검출된 클러스터 안의 `구성입자`들의 정보만을 가지고 `붕괴입자`를 찾아 `특정입자`를 재구성 해야합니다.
@@ -23,7 +25,8 @@ comments: true
 * 구성입자들 중 붕괴입자가 무엇인지 알 수 없습니다.
 * 붕괴입자 하나만으로는 특정입자를 재구성 할 수 없습니다.
 
-##  Motivation
+## Motivation
+
 * 특정입자를 재구성하는 기존 방법에서는 클러스터 내부의 모든 구성입자에 대해 두개씩 짝지어 모두 재구성 하였습니다.
 * 구성입자의 개수 N에 대해 $$ \sum^{N-1}_{i=1} i $$ 번의 계산을 수행하여 많은시간과 불필요한 작업이 수반됩니다.
 * 특정입자를 재구성 한 후엔 단순한 cut 조건을 주어 정확도가 떨어집니다.
@@ -32,30 +35,28 @@ comments: true
 
 ![project-3]({{ site.url }}/img/project-3.PNG)
 
-
-## 연구 방법
-
-
-
-#### 문제 분류 
-* 특정입자가 존재했던 클러스터인지 아닌지 판단하는 분류문제 -> Classify
+## 연구 방법 
+###문제 분류 
+#### Classification
+* 특정입자가 존재했던 클러스터인지 아닌지 판단하는 `분류문제`
 
 ![project-4]({{ site.url }}/img/project-4.PNG)
 
-* 특정입자를 재구성 할 클러스터 내 두개의 구성입자를 찾는 선택문제 -> Choice
+#### Choice
+* 특정입자를 재구성 할 클러스터 내 두개의 구성입자를 찾는 `선택문제`
 
 ![project-5]({{ site.url }}/img/project-5.PNG)
 
-## Data pre processing
+
+## Data pre-processing
 
 ### Data format 
-### Unbalnced data
 
 ### Input shape
 
 ![project-6]({{ site.url }}/img/project-6.PNG)
 
-#### 구성입자 개수
+#### number of particles
 
 * 구성입자의 개수는 2개부터 최대 50개 까지 
 * 50 개 이하이면 0으로 패딩
