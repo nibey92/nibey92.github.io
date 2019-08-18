@@ -5,6 +5,7 @@ excerpt: "LSTM을 이용한 데이터 클러스터 분석"
 categories: [project]
 comments: true
 ---
+양성자 충돌시 나오는 데이터들은 클러스터를 이루기도 합니다. 원하는 데이터들은 이미 클러스터 안에서 붕괴되었습니다. 하지만 LSTM을 이용하여 클러스터 안에서 붕괴된 입자가 있었는지 분류하고 재구성합니다.
 
 ## Introduction
 
@@ -60,19 +61,18 @@ comments: true
 
 #### number of particles
 
-* 구성입자의 개수는 2개부터 최대 50개 까지 
-* 50 개 이하이면 0으로 패딩
-* energy ordering
+* 한 클러스터 안의 구성입자의 개수는 최소 2개부터 최대 50개 까지 존재합니다. 
+* 인풋 데이터의 사이즈를 고정하기 위해 구성입자 개수가 50 개 이하이면 0으로 padding 합니다.
+* Energy ordering을 통해 가장 높은 energy를 가진 구성입자부터 정렬합니다.
 
 #### feature
 
 ![project-7]({{ site.url }}/img/project-7.png)
 
-#### one-hot encoding
-
-PID는 one-hot-encoding을 사용하였습니다.
-
-따라서 총 feature의 개수는 8개 
+* feature 에 들어가는 구성입자의 정보는 총 여섯가지입니다.
+* 그 중 PID는 세가지 종류로 muon , electron, hadron 총 세가지로 구분됩니다.
+* PID는 one-hot encoding으로 3차원 벡터로 변환합니다.
+* 따라서 최종 feature의 size는 8입니다.
 
 ### Output shape
 
