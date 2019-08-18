@@ -62,7 +62,7 @@ comments: true
 
 #### number of particles
 
-![project-15]({{ site.url }}/img/project-15.png)
+![project-16]({{ site.url }}/img/project-16.png)
 
 * Energy ordering을 통해 가장 높은 energy를 가진 구성입자부터 정렬합니다.
 * 한 클러스터 안의 구성입자의 개수는 최소 2개부터 최대 50개 이상 까지 존재합니다. 99.9프로 이상의 클러스터는 50개 미만의 구성입자를 가지고 있습니다.
