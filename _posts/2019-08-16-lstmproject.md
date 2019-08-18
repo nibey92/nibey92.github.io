@@ -38,23 +38,23 @@ comments: true
 
 ## 연구 방법 
 ### 문제 분류 
-#### Classification
+##### Classification
 * 특정입자가 존재했던 클러스터인지 아닌지 판단하는 `분류문제`
 
 ![project-4]({{ site.url }}/img/project-4.PNG)
 
-#### Choice
+##### Choice
 * 특정입자를 재구성 할 클러스터 내 두개의 구성입자를 찾는 `선택문제`
 
 ![project-5]({{ site.url }}/img/project-5.PNG)
 
-## 연구 순서
+### 연구 순서
 * **먼저 분류문제를 수행하고 분류문제에서 1을 얻은 클러스터를 대상으로 선택문제를 수행합니다.**
 
 ## Data pre-processing
 * preprocessing에 관한 모든 코드는 [깃허브](https://github.com/yebiny/RNN_forCluster/tree/master/4-Dataset)에서 참고하실 수 있습니다.
 
-#### Number of data 
+### Number of data 
 
 ![project-17]({{ site.url }}/img/project-17.png)
 
@@ -62,7 +62,7 @@ comments: true
 
 ![project-6]({{ site.url }}/img/project-6.PNG)
 
-#### number of particles
+##### number of particles
 
 ![project-16]({{ site.url }}/img/project-16.png)
 
@@ -70,7 +70,7 @@ comments: true
 * 한 클러스터 안의 구성입자의 개수는 최소 2개부터 최대 50개 이상 까지 존재합니다. 99.9프로 이상의 클러스터는 50개 미만의 구성입자를 가지고 있습니다.
 * 인풋 데이터의 사이즈를 고정하기 위해 구성입자 개수가 50 개 이하이면 0으로 padding 합니다.
 
-#### feature
+##### feature
 
 ![project-7]({{ site.url }}/img/project-7.png)
 
@@ -83,14 +83,13 @@ comments: true
 
 * 분류문제와 선택문제의 output shape는 각각의 목적에 맞도록 다르게 주었습니다.
 
-#### 분류문제
+##### 분류문제
 
 ![project-7]({{ site.url }}/img/project-8.PNG)
 
-#### 선택문제
+##### 선택문제
 
 ![project-7]({{ site.url }}/img/project-9.PNG)
-
 
 ## Model
 
@@ -102,15 +101,14 @@ comments: true
 > [LSTM](https://yebiny.github.io/articles/2019-07/lstm)
 LSTM은 연속적인 데이터를 처리하는데 효과적입니다. 이전 데이터를 기억하여 다음 데이터에 반영하기 때문에 클러스터 전체 입자를 고려하여 판단을 내려야 하는 이번 연구목적에 잘 부합하는 모델입니다. 
 
-
 ### Model development
 모델 구현 코드는 [깃허브](https://github.com/yebiny/RNN_forCluster/tree/master/5-Model)에 정리해 놓았습니다. 
 
-#### Classify
+##### Classify
 
 ![project-7]({{ site.url }}/img/project-10.PNG)
 
-#### Choice
+##### Choice
 
 ![project-7]({{ site.url }}/img/project-11.PNG)
 
