@@ -52,7 +52,7 @@ comments: true
 * **먼저 분류문제를 수행하고 분류문제에서 1을 얻은 클러스터를 대상으로 선택문제를 수행합니다.**
 
 ## Data pre-processing
-* preprocessing에 관한 모든 코드는 [깃허브](https://github.com/yebiny/RNN_forCluster/tree/master/4-Dataset)에서 참고하실 수 있습니다.
+* preprocessing에 관한 모든 코드는 [깃허브](https://github.com/yebiny/RNN_forCluster/tree/master/4-Dataset)에서 보실 수 있습니다.
 
 ### Number of data 
 
@@ -128,7 +128,7 @@ LSTM은 연속적인 데이터를 처리하는데 효과적입니다. 이전 데
 ![project-7]({{ site.url }}/img/project-12.png)
 
 ##### ROC Curve
-* ROC AUC는 0.907로 분류 성능이 좋은 것을 확인할 수 있습니다.
+* ROC AUC는 0.907로 분류 작업이 잘 이루어지고 있는 것을 볼 수 있습니다.
 ![project-7]({{ site.url }}/img/project-13.png)
 
 
