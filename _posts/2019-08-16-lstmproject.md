@@ -113,9 +113,18 @@ LSTM은 연속적인 데이터를 처리하는데 효과적입니다. 이전 데
 ![project-7]({{ site.url }}/img/project-11.PNG)
 
 ## Results
-![project-7]({{ site.url }}/img/project-12.png)
 
-![project-7]({{ site.url }}/img/project-13.png)
+### Classify
+* 총 epcoch는 20번입니다. 
+* 모든 epoch 후 accuracy는 0.839(train),0.824(validation)를 얻었습니다.
 
 ![project-7]({{ site.url }}/img/project-14.PNG)
+
+* model response를 시각적으로 표현하엿습니다. 클러스터의 구분이 잘 되고 있음을 볼 수 있습니다.
+* Train set은 면적으로, test set은 선으로 표현하였습니다. 둘의 차이가 거의 없어 overfitting이 발생하지 않았다고 볼 수 있습니다.
+![project-7]({{ site.url }}/img/project-12.png)
+
+* ROC AUC는 0.907로 분류 성능이 좋은 것을 확인할 수 있습니다.
+![project-7]({{ site.url }}/img/project-13.png)
+
 
