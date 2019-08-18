@@ -48,14 +48,14 @@ comments: true
 
 ![project-5]({{ site.url }}/img/project-5.PNG)
 
-**먼저 분류문제를 수행하고 분류문제에서 1을 얻은 클러스터를 대상으로 선택문제를 수행합니다.
+**먼저 분류문제를 수행하고 분류문제에서 1을 얻은 클러스터를 대상으로 선택문제를 수행합니다.**
 
 ## Data pre-processing
-preprocessing에 관한 모든 코드는 [깃허브](https://github.com/yebiny/RNN_forCluster/tree/master/4-Dataset)에서 참고하실 수 있습니다.
+* preprocessing에 관한 모든 코드는 [깃허브](https://github.com/yebiny/RNN_forCluster/tree/master/4-Dataset)에서 참고하실 수 있습니다.
 
 #### Number of data 
 
-![project-17]({{ site.url }}/img/project-17.PNG)
+![project-17]({{ site.url }}/img/project-17.png)
 
 ### Input shape
 
@@ -80,13 +80,13 @@ preprocessing에 관한 모든 코드는 [깃허브](https://github.com/yebiny/R
 
 ### Output shape
 
-**분류문제와 선택문제의 output shape는 각각의 목적에 맞도록 다르게 주었습니다.
+* 분류문제와 선택문제의 output shape는 각각의 목적에 맞도록 다르게 주었습니다.
 
-* 분류문제
+#### 분류문제
 
 ![project-7]({{ site.url }}/img/project-8.PNG)
 
-* 선택문제
+#### 선택문제
 
 ![project-7]({{ site.url }}/img/project-9.PNG)
 
