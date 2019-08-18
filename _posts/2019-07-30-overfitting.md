@@ -24,9 +24,9 @@ comments: true
 ## Bias 와 Variance
 
 over fitting을 좀더 자세히 알기 위해서는 bias와 varience에 대한 개념을 알아야 합니다.
-* Bias: 실제 값에서 멀어진 척도
+* **Bias:** 실제 값에서 멀어진 척도
 ![over_2]({{ site.url }}/img/overfitting-bias.PNG)
-* variance: 예측된 값들이 서로 얼마나 떨어져 있는가 척도
+* **variance:** 예측된 값들이 서로 얼마나 떨어져 있는가 척도
 ![over_2]({{ site.url }}/img/overfitting-variance.PNG)
 
 bias와 variance를 줄이는 것이 딥러닝의 목표라 할 수 있습니다. 이때 `bias`가 높아진다는 것은 `underfitting`이 일어나는 것이고 `variance`가 높아진다는 것은 `overfitting`이 일어나는 것이라 할 수 있습니다. 또한 `bias와 variace`는 밑에 그림에서 볼 수 있듯 `trade off` 관계를 가지고 있습니다.
