@@ -75,7 +75,7 @@ comments: true
 ![project-7]({{ site.url }}/img/project-7.png)
 
 * feature 에 들어가는 구성입자의 정보는 총 여섯가지입니다.
-* 그 중 PID는 세가지 종류로 muon , electron, hadron 총 세가지로 구분됩니다.
+* 그 중 PID는 muon , electron, hadron 총 세가지로 구분됩니다.
 * PID는 [one-hot encoding](https://yebiny.github.io/articles/2019-08/onehot)으로 3차원 벡터로 변환합니다.
 * 따라서 최종 feature의 size는 8입니다.
 
