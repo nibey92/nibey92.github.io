@@ -48,6 +48,7 @@ comments: true
 
 ![project-5]({{ site.url }}/img/project-5.PNG)
 
+먼저 분류문제를 수행하고 분류문제에서 1을 얻은 클러스터를 대상으로 선택문제를 수행합니다.
 
 ## Data pre-processing
 
@@ -78,6 +79,8 @@ comments: true
 * 따라서 최종 feature의 size는 8입니다.
 
 ### Output shape
+
+분류문제와 선택문제의 output shape는 다르게 주었습니다.
 
 * 분류문제
 
