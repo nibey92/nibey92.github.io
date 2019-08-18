@@ -51,6 +51,7 @@ comments: true
 먼저 분류문제를 수행하고 분류문제에서 1을 얻은 클러스터를 대상으로 선택문제를 수행합니다.
 
 ## Data pre-processing
+preprocessing에 관한 모든 코드는 [깃허브](https://github.com/yebiny/RNN_forCluster/tree/master/4-Dataset)에서 참고하실 수 있습니다.
 
 ### Data format 
 #### number of data
@@ -75,7 +76,7 @@ comments: true
 
 * feature 에 들어가는 구성입자의 정보는 총 여섯가지입니다.
 * 그 중 PID는 세가지 종류로 muon , electron, hadron 총 세가지로 구분됩니다.
-* PID는 one-hot encoding으로 3차원 벡터로 변환합니다.
+* PID는 [one-hot encoding](https://yebiny.github.io/articles/2019-08/onehot)으로 3차원 벡터로 변환합니다.
 * 따라서 최종 feature의 size는 8입니다.
 
 ### Output shape
