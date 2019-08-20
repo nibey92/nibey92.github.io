@@ -111,18 +111,18 @@ BiLSTM 시간 스텝 t에서의 출력값이 이전 시간 스텝 외에, 이후
 
 ![project-7]({{ site.url }}/img/project-18.PNG)
 
-* Batch normalization을 사용하여 overfitting을 방지합니다.
-* 첫번재와 두번재 dense layer에는 activation function으로 Relu를 사용하였고 두번재는 sigmoid를 사용했습니다.
-* loss function은 binary_crossentropy를 사용하였고 accuracy는 Keras 내의 기본 함수를 사용했습니다.
-* optimizer는 Adam을 사용합니다.
+* `Batch normalization`을 사용하여 overfitting을 방지합니다.
+* 첫번재와 두번째 dense layer에는 activation function으로 `Relu`를 사용하였고 마지막에는 `sigmoid`를 사용했습니다.
+* loss function은 `binary_crossentropy`를 사용하였고 accuracy는 Keras 내의 기본 함수를 사용했습니다.
+* optimizer는 `Adam`을 사용합니다.
 ##### 선택 문제
 
 ![project-7]({{ site.url }}/img/project-19.PNG)
 
-* Drop out을 사용하여 overfitting을 방지합니다.
-* 첫번재 dense layer에는 activation function으로 Relu를 사용하였고 두번재는 sigmoid를 사용했습니다.
-* loss function은 binary_crossentropy를 사용하였고 accuracy는 전체 클러스터 개수 중 모든 구성입자를 맞춘 클러스터 개수로 정의합니다.
-* optimizer는 Adam을 사용합니다.
+* `Drop out`을 사용하여 overfitting을 방지합니다.
+* 첫번째 dense layer에는 activation function으로 `Relu`를 사용하였고 두번째는 `sigmoid를 사용했습니다.
+* loss function은 `binary_crossentropy`를 사용하였고 accuracy는 전체 클러스터 개수 중 모든 구성입자를 맞춘 클러스터 개수로 정의합니다.
+* optimizer는 `Adam`을 사용합니다.
 
 
 ## Results
