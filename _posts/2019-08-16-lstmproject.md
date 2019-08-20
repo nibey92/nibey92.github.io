@@ -97,9 +97,12 @@ comments: true
 * 한개의 클러스터는 여러개의 구성입자로 이루어져 있고 이는 벡터로 표현할 수 있습니다.
 * 구성입자 하나만을 가지고 특정입자를 재구성할 수 없고 구성입자 전체의 정보를 확인해야 합니다.
 
-**$$\rightarrow$$ 이러한 데이터의 특성을 가장 잘 반영할 수 있는 모델로 [LSTM](https://yebiny.github.io/articles/2019-07/lstm)을 사용하기로 하였습니다.**
+**$$\rightarrow$$ 이러한 데이터의 특성을 가장 잘 반영할 수 있는 모델로 [LSTM](https://yebiny.github.io/articles/2019-07/lstm)을 사용하기로 하였습니다. 그 중에서도 정보 손실을 효과적으로 방지하는 Bi-LSTM을 사용합니다.**
 > [LSTM](https://yebiny.github.io/articles/2019-07/lstm)
 LSTM은 연속적인 데이터를 처리하는데 효과적입니다. 이전 데이터를 기억하여 다음 데이터에 반영하기 때문에 클러스터 전체 입자를 고려하여 판단을 내려야 하는 이번 연구목적에 잘 부합하는 모델입니다. 
+
+> Bidirectional LSTM
+BiLSTM 시간 스텝 t에서의 출력값이 이전 시간 스텝 외에, 이후의 시간 스텝에서 들어오는 입력값에도 영향을 받을 수 있다는 아이디어에 기반한다. 네트워크 구조는 LSTM에서 단순히 확장되어서, 두 개의 LSTM이 동시에 존재하고, 출력값은 두 LSTM의 hidden state에 모두 의존하도록 계산된다.
 
 ### 모델 구현
 모델 구현 코드는 [깃허브](https://github.com/yebiny/RNN_forCluster/tree/master/5-Model)에 정리해 놓았습니다. 
@@ -108,9 +111,19 @@ LSTM은 연속적인 데이터를 처리하는데 효과적입니다. 이전 데
 
 ![project-7]({{ site.url }}/img/project-18.PNG)
 
+* Batch normalization을 사용하여 overfitting을 방지합니다.
+* 첫번재와 두번재 dense layer에는 activation function으로 Relu를 사용하였고 두번재는 sigmoid를 사용했습니다.
+* loss function은 binary_crossentropy를 사용하였고 accuracy는 Keras 내의 기본 함수를 사용했습니다.
+* optimizer는 Adam을 사용합니다.
 ##### 선택 문제
 
 ![project-7]({{ site.url }}/img/project-19.PNG)
+
+* Drop out을 사용하여 overfitting을 방지합니다.
+* 첫번재 dense layer에는 activation function으로 Relu를 사용하였고 두번재는 sigmoid를 사용했습니다.
+* loss function은 binary_crossentropy를 사용하였고 accuracy는 전체 클러스터 개수 중 모든 구성입자를 맞춘 클러스터 개수로 정의합니다.
+* optimizer는 Adam을 사용합니다.
+
 
 ## Results
 
