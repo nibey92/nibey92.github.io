@@ -150,5 +150,3 @@ comments: true
 * 총 epoch는 50번입니다.
 * Accuracy 는 0.67(trainset), 0.66(validation) 를 얻었습니다.
 * 분류문제와 달리 성능이 다소 떨어지는 것을 확인 할 수 있습니다.
-
-![project-7]({{ site.url }}/img/project-20.png)
