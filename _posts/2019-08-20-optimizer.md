@@ -31,6 +31,29 @@ model.fit(X_train, y_train, batch_size=1)
 {% highlight ruby %} 
 model.fit(X_train, y_train, batch_size=32)
 {% endhighlight %}
+
+### Momentum
+모멘텀(Momentum)은 관성이라는 물리학의 법칙을 응용한 방법입니다. 모멘텀 SGD는 경사 하강법에 관성을 더 해줍니다. 모멘텀은 SGD에서 계산된 접선의 기울기에 한 시점(step) 전의 접선의 기울기값을 일정한 비율만큼 반영합니다. 이렇게 하면 마치 언덕에서 공이 내려올 때, 중간에 작은 웅덩이에 빠지더라도 관성의 힘으로 넘어서는 효과를 줄 수 있습니다.
+
+다시 말해 로컬 미니멈에 도달하였을 때, 기울기가 0이라서 기존의 경사 하강법이라면 이를 글로벌 미니멈으로 잘못 인식하여 계산이 끝났을 상황이라도 모멘텀. 즉, 관성의 힘을 빌리면 값이 조절되면서 로컬 미니멈에서 탈출하는 효과를 얻을 수도 있습니다. 케라스에서는 다음과 같이 사용합니다.
+{% highlight ruby %} 
+keras.optimizers.SGD(lr = 0.01, momentum= 0.9)
+{% endhighlight %}
+
+### Adagrad
+
+매개변수들은 각자 의미하는 바가 다른데, 모든 매개변수에 동일한 학습률(learning rate)을 적용하는 것은 비효율적입니다. 아다그라드는 각 매개변수에 서로 다른 학습률을 적용시킵니다. 이 때, 변화가 많은 매개변수는 학습률이 작게 설정되고 변화가 적은 매개변수는 학습률을 높게 설정시킵니다. 케라스에서는 다음과 같이 사용합니다.
+{% highlight ruby %} 
+keras.optimizers.Adagrad(lr=0.01, epsilon=1e-6)
+{% endhighlight %}
+
+### RMSprop
+
+아다그라드는 학습을 계속 진행한 경우에는, 나중에 가서는 학습률이 지나치게 떨어진다는 단점이 있는데 이를 다른 수식으로 대체하여 이러한 단점을 개선하였습니다. 케라스에서는 다음과 같이 사용합니다
+{% highlight ruby %} 
+keras.optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=1e-06)
+{% endhighlight %}
+
 ### Adam
 현재 가장 일반적으로 사용되는 알고리즘이라 할 수 있습니다. 아담은 알엠에스프롭과 모멘텀 두 가지를 합친 듯한 방법으로, 방향과 학습률 두 가지를 모두 잡기 위한 방법입니다. 케라스에서는 다음과 같이 사용합니다.
 {% highlight ruby %} 
