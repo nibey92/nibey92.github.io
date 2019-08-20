@@ -113,6 +113,7 @@ comments: true
 * 첫번재와 두번째 dense layer에는 activation function으로 `Relu`를 사용하였고 마지막에는 `sigmoid`를 사용했습니다.
 * loss function은 `binary_crossentropy`를 사용하였고 accuracy는 Keras 내의 기본 함수를 사용했습니다.
 * optimizer는 `Adam`을 사용합니다.
+
 ##### 선택 문제
 
 ![project-7]({{ site.url }}/img/project-19.PNG)
