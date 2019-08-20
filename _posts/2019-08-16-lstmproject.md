@@ -106,11 +106,11 @@ LSTM은 연속적인 데이터를 처리하는데 효과적입니다. 이전 데
 
 ##### 분류 문제
 
-![project-7]({{ site.url }}/img/project-10.PNG)
+![project-7]({{ site.url }}/img/project-18.PNG)
 
 ##### 선택 문제
 
-![project-7]({{ site.url }}/img/project-11.PNG)
+![project-7]({{ site.url }}/img/project-19.PNG)
 
 ## Results
 
