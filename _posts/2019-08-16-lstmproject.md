@@ -101,8 +101,8 @@ comments: true
 > [LSTM](https://yebiny.github.io/articles/2019-07/lstm)
 LSTM은 연속적인 데이터를 처리하는데 효과적입니다. 이전 데이터를 기억하여 다음 데이터에 반영하기 때문에 클러스터 전체 입자를 고려하여 판단을 내려야 하는 이번 연구목적에 잘 부합하는 모델입니다. 
 
-> Bidirectional LSTM
-BiLSTM 시간 스텝 t에서의 출력값이 이전 시간 스텝 외에, 이후의 시간 스텝에서 들어오는 입력값에도 영향을 받을 수 있다는 아이디어에 기반한다. 네트워크 구조는 LSTM에서 단순히 확장되어서, 두 개의 LSTM이 동시에 존재하고, 출력값은 두 LSTM의 hidden state에 모두 의존하도록 계산된다.
+> [Bidirectional LSTM]
+ 시간 스텝 t에서의 출력값이 이전 시간 스텝 외에, 이후의 시간 스텝에서 들어오는 입력값에도 영향을 받을 수 있다는 아이디어에 기반한다. 네트워크 구조는 LSTM에서 단순히 확장되어서, 두 개의 LSTM이 동시에 존재하고, 출력값은 두 LSTM의 hidden state에 모두 의존하도록 계산된다.
 
 ### 모델 구현
 모델 구현 코드는 [깃허브](https://github.com/yebiny/RNN_forCluster/tree/master/5-Model)에 정리해 놓았습니다. 
