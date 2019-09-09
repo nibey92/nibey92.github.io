@@ -19,7 +19,7 @@ comments: true
 그림에서 처럼 왼쪽은 제대로 학습이 되지 않은 상태, 가운데는 최적의 학습상태, 그리고 오른쪽이 overfitting 상태입니다. 만약 오른쪽 그림처럼 overfitting 인 상태라면 학습 데이터에 대해서만 정확하게 학습되어 실제 데이터에서는 좋은 성능을 보여주지 못하게 됩니다. 따라서, 아래 그림에서 처럼 traing data와 test data에 대해서 error 값이나 accuracy 값이 과하게 차이가 난다면 overfitting이 일어났다고 할 수 있습니다. 
 한마디로 ovefitting 이란 **학습 데이터에 대해 과하게 학습하여 실제 데이터에 대한 오차가 증가하는 현상** 입니다.
 
-![over_2]({{ site.url }}/img/overfitting-2.png)
+![over_2]({{ site.url }}/img/overfitting-2.PNG)
 
 ## Bias 와 Variance
 
@@ -30,7 +30,7 @@ over fitting을 좀더 자세히 알기 위해서는 bias와 varience에 대한 
 ![over_2]({{ site.url }}/img/overfitting-variance.PNG)
 
 bias와 variance를 줄이는 것이 딥러닝의 목표라 할 수 있습니다. 이때 `bias`가 높아진다는 것은 `underfitting`이 일어나는 것이고 `variance`가 높아진다는 것은 `overfitting`이 일어나는 것이라 할 수 있습니다. 또한 `bias와 variace`는 밑에 그림에서 볼 수 있듯 `trade off` 관계를 가지고 있습니다.
-![over_2]({{ site.url }}/img/overfitting-3.png)
+![over_2]({{ site.url }}/img/overfitting-3.PNG)
 >A Modern Take on the Bias-Variance Tradeoff in Neural Networks
 
 정리하자면
@@ -46,7 +46,7 @@ bias와 variance를 줄이는 것이 딥러닝의 목표라 할 수 있습니다
 > `ensenmble learning`은 개별적으로 학습시킨 여러 모델의 출력을 종합해 추론하는 방식입니다. 뉴럴 네트워크를 개별적으로 학습시키고, 각 네트워크에 같은 input을 주어 나온 출력 뉴런 각각의 평균을 구한 다음 여기서 가장 큰 값을 정답으로 판정하면 되기 때문에 간단히 구현할 수 있습니다. 
 > * $$1/N \sum_{i}^{N} output_i$$
 
-![over_2]({{ site.url }}/img/overfitting-4.png)
+![over_2]({{ site.url }}/img/overfitting-4.PNG)
 
 ### L2 regularization
 가장 일반적으로 사용하는 regularization 기법으로 가중치가 클 수록 큰 패널티를 부과하여 오버피팅을 억제하는 방법입니다. 패널티를 부과하는 방법은 loss function에 $$ 1/2 \lambda \sum W^2 $$ 을 더해줍니다. 이 값을 미분한 값은 $$ \lambda W$$이고 오차역전파를 통해 계산한 기울기에 $$\lambda W$$를 더하게 되어 가중치 값이 그만큼 보정됩니다. 
