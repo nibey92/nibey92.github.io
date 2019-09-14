@@ -15,7 +15,7 @@ comments: true
 
 앞에서 손실함수에 대해 이해하였으니 이제 이 손실함수의 값을 어떻게 줄여가느냐에 대해 알아봅시다. 손실함수의 값을 어떻게 줄여나가느냐를 정하는 것은 어떤 optimizer를 사용하느냐에 따라 달라집니다. optimizer에 대해 알아보기 전 `Batch` 라는 개념에 대한 이해가 필요합니다. `Batch`는 가중치 등의 매개 변수의 값을 조정하기 위해 사용하는 데이터의 양을 말합니다. 전체 데이터를 가지고 매개 변수의 값을 조정할 수도 있고 정해준 양의 데이터만 가지고도 매개 변수의 값을 조정할 수 있습니다. 
 
-## Batch Gradient Descent(배치 경사 하강법)
+## 1. Batch Gradient Descent(배치 경사 하강법)
 이 방법은 가장 기본적인 경사 하강법입니다. 배치경사 하강법은 옵티마이저 중 하나로 loss를 구할때 전체 데이터를 고려합니다. 머신러닝에서는 1번의 훈련횟수를 1 epoch라고 하는데 배치 경사 하강법은 한번의 epoch에 모든 매개변수 업데이트를 단 한번 수행합니다. 이 방법은 전체 데이터를 고려해서 학습하므로 epoch당 시간이 오래 걸리며 메모리를 크게 요구한다는 단점이 있으나 글로벌 미니멈을 찾을 수 있다는 장점이 있습니다. 수식과 케라스 소스 코드는 다음과 같습니다. 
 
 ### 수식
@@ -26,14 +26,14 @@ comments: true
 model.fit(X_train, y_train, batch_size=len(trainX))
 {% endhighlight %}
 
-## Stochastic Gradient Descent(SGD)
+## 2. Stochastic Gradient Descent(SGD)
 기존의 배치경사하강법은 전체 데이터에 대해서 계산을 하다보니 시간이 너무 오래 걸린다는 단점이 있습니다. `확률적 경사 하강법`은 매개변수 값을 조정 시 전체 데이터가 아니라 랜덤으로 추출한 한 개의 데이터에 대해서만 가중치를 계산하고 조절하는 방법입니다. 하나의 데이터만을 사용하므로 계산 속도가 더 빨라질 것이라고 추측할 수 있겠죠. 하지만 매개변수의 변경폭이 불안정하고 때로는 배치 경사 하강법보다 정확도가 낮을 수도 있다는 단점을 가지고 있습니다. 
 
 ### 수식
 
 수식은 경사하강법과 같습니다.
 
-* $$ W(t+1) = W(t) - \alpha \frac{\rho}{\rho w} Cost(w) $$
+* $$ W(t+1) = W(t) - \alpha \frac{\partial}{\partial w} Cost(w) $$
 
 단 $$Cost(w)$$에 사용되는 $$x$$, 즉 입력 데이터의 수가 전체가 아닌 확률적으로 선택된 한 개만 사용됩니다. 수식에서 $$\alpha$$ 는 leraning rate를 뜻합니다.
 
@@ -53,14 +53,14 @@ keras.optimizers.SGD(lr=0.1)
 model.fit(X_train, y_train, batch_size=1)
 {% endhighlight %}
 
-## Mini-Batch Gradient Descent
+## 3. Mini-Batch Gradient Descent
 전체 데이터도 아니고, 1개의 데이터도 아니고 정해진 양에 대해서만 계산하여 매개 변수의 값을 조정하는 경사 하강법을 미니 배치 경사 하강법이라고 합니다. 미니 배치 경사 하강법은 전체 데이터를 계산하는 것보다 빠르며, SGD보다 안정적이라는 장점이 있습니다. SGD라고 한다면 실질적으로는 Mini-Batch 경사하강법을 얘기하기도 합니다. 실제로 가장 많이 사용되는 경사 하강법입니다. 
 
 ### 수식
 
 수식은 위의 방법들과 동일합니다. 
 
-* $$ W(t+1) = W(t) - \alpha \frac{\rho}{\rho w} Cost(w) $$
+* $$ W(t+1) = W(t) - \alpha \frac{\partial}{\partial w} Cost(w) $$
 
 여기서는 $$Cost(w)$$에 사용되는 $$x$$, 입력 데이터의 수가 확률적으로 선택된 부분이 됩니다.
 
@@ -110,8 +110,8 @@ keras.optimizers.SGD(lr = 0.01, momentum= 0.9)
 Adagrad는 같은 입력 데이터가 여러번 학습되는 학습모델에 유용하게 쓰이는데 대표적으로 언어와 관련된 word2vec이나 GloVe에 유용합니다. 이는 학습 단어의 등장 확률에 따라 변수의 사용 비율이 확연하게 차이나기 때문에 많이 등장한 단어는 가중치를 적게 수정하고 적게 등장한 단어는 많이 수정할 수 있기 때문입니다.
 
 ### 수식
-* $$ G(t) = G(t-1) -(\frac{\rho}{\rho w(t)} Cost(w(t)))^2 = \sum^{t}_{i=0} (\frac{\rho}{\rho w(i)} Cost(w(i)))^2 $$
-* $$ W(t+1) = W(t)-\alpha * \frac{1}{\sqrt{G(t)+e}} * \frac{\rho}{\rho w(i)} Cost(w(i)) $$
+* $$ G(t) = G(t-1) -(\frac{\partial}{\partial w(t)} Cost(w(t)))^2 = \sum^{t}_{i=0} (\frac{\partial}{\partial w(i)} Cost(w(i)))^2 $$
+* $$ W(t+1) = W(t)-\alpha * \frac{1}{\sqrt{G(t)+e}} * \frac{\partial}{\partial w(i)} Cost(w(i)) $$
 
 G(t)의 수식을 보면 현재 gradient 제곱에 G(t-1) 값이 더해집니다. 이는 각 step의 모든 gradient에 대한 sum of squares 라는 것을 뜻합니다. W(t+1)을 구하는 식에서 G(t)는 $$\epsilon$$ 값과 더해진 후 루트가 적용되고 $$\alpha$$ 에 나누어 집니다. 여기서 $$\epsilon$$은 아주 작은 상수를 의미하며, 0으로 나누는 것을 방지합니다. 그리고 $$\alpha$$는 learning rate를 나타내며 G(t)의 크기에 따라 값이 변합니다. 
 
