@@ -216,8 +216,8 @@ AdaDelta는 Adagrad, RMSprop, Momentum 모두를 합친 경사하강법입니다
 경사 하강법에서는 First Order Methods가 적용된 하강법에서는 1차 미분만 하여 gradient가 0인 지점을 찾습니다. 그렇다보니 saddle point에서 문제가 발생할 수 있습니다. 반면 Second Order Methods를 사용한 AdaDelta는 saddle point에서 문제가 발생하지 않지만 2차 미분까지 하기때문에 계산속도가 상대적으로 느립니다.
 
 * $$G(t) = \gamma G(t-1) + (1-\gamma)(\frac{\partial}{\partial w(t)} Cost(w(t)))^2 $$
-* $$ \delta w(t) = \frac{\sqrt{\deltaS(t-1)+\epsilon}}{\sqrt{G(t)+\epsilon}} * \frac{\partial}{\partial w(i)} Cost(w(i))$$
-* $$ S(t) = \gammaS(t-1)+(1-\gamma)(\delta w (t))^2$$
+* $$ \delta w(t) = \frac{\sqrt{\delta S(t-1)+\epsilon}}{\sqrt{G(t)+\epsilon}} * \frac{\partial}{\partial w(i)} Cost(w(i))$$
+* $$ S(t) = \gamma S(t-1)+(1-\gamma)(\delta w (t))^2$$
 * $$ W(t+1) = W(t) - \delta w(t)$$
 * 단, $$G(0) = 0, S(0) = 0$$
 
