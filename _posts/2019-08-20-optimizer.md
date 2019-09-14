@@ -29,6 +29,10 @@ model.fit(X_train, y_train, batch_size=len(trainX))
 ## 2. Stochastic Gradient Descent(SGD)
 기존의 배치경사하강법은 전체 데이터에 대해서 계산을 하다보니 시간이 너무 오래 걸린다는 단점이 있습니다. `확률적 경사 하강법`은 매개변수 값을 조정 시 전체 데이터가 아니라 랜덤으로 추출한 한 개의 데이터에 대해서만 가중치를 계산하고 조절하는 방법입니다. 하나의 데이터만을 사용하므로 계산 속도가 더 빨라질 것이라고 추측할 수 있겠죠. 하지만 매개변수의 변경폭이 불안정하고 때로는 배치 경사 하강법보다 정확도가 낮을 수도 있다는 단점을 가지고 있습니다. 
 
+![optimizer_n-1]({{ site.url }}/img/optimizer_n-1.PNG)
+
+> 배치 경사 하강법과 확률적 경사 하강법의 비교 
+
 ### 수식
 
 수식은 경사하강법과 같습니다.
@@ -71,7 +75,7 @@ keras.optimizers.SGD(lr=0.1)
 model.fit(X_train, y_train, batch_size=32)
 {% endhighlight %}
 
-## Momentum
+## 4. Momentum
 모멘텀(Momentum)은 관성, 탄력, 가속도라는 뜻입니다. 단어 그대로 모멘텀은 경사 하강법에 관성을 더해줍니다. 경사 하강법과 마찬가지로 매번 기울기를 구하지만 가중치를 수정하기 전 계산된 접선의 기울기에 한 시점(step) 전의 접선의 기울기값을 일정한 비율만큼 반영합니다. 따라서 양(+) 방향과 음(-) 방향이 순차적으로 일어나는 지그재그 현상이 줄어들고 이전 이동 값을 고려해 일정 비율만큼 다음 값을 결정하게 되므로 관성의 효과를 낼 수 있습니다. 이렇게 하면 마치 언덕에서 공이 내려올 때, 중간에 작은 웅덩이에 빠지더라도 관성의 힘으로 넘어서는 효과를 줄 수 있습니다.
 
 다시 말해 로컬 미니멈에 도달하였을 때, 기울기가 0이라서 기존의 경사 하강법이라면 이를 글로벌 미니멈으로 잘못 인식하여 계산이 끝났을 상황이라도 모멘텀. 즉, 관성의 힘을 빌리면 값이 조절되면서 로컬 미니멈에서 탈출하는 효과를 얻을 수도 있습니다. 케라스에서는 다음과 같이 사용합니다.
@@ -97,8 +101,29 @@ optimize = tf.train.MomentumOptimizer(learning_rate=0.01,momentum=0.9).minimize(
 keras.optimizers.SGD(lr = 0.01, momentum= 0.9)
 {% endhighlight %}
 
+## 5. Nesterov Accelrated Gradient, NAG
 
-## 4. Adagrad
+NAG는 momentum 값과 gradient 값이 더해저 실제(actual) 값을 만드는 기존 momentum과는 달리 momentum 값이 적용된 지점에서 gradient 값이 계산됩니다. 
+
+### 수식
+
+* $$ V(t) = m * V(t-1) - \alpha \frac{\partial}{\partial(w+m*V(t-1))}Cost(w) $$
+* $$ W(t+1) = W(t) + V(t) $$
+
+### Python
+{% highlight python %} v = m * v - learning_rate * gradient(weight[i-1]+m*v)
+weight[i] += v
+{% endhighlight %}
+### Tensorflow
+{% highlight python %} 
+optimize = tf.train.MomentumOptimizer(learning_rate=0.01,momentum=0.9,use_nesterov=True).minimize(loss)
+{% endhighlight %}
+### Keras
+{% highlight python %} 
+keras.optimizers.SGD(lr=0.1, momentum=0.9, nesterov=True)
+{% endhighlight %}
+
+## 6. Adagrad
 
 매개변수들은 각자 의미하는 바가 다른데, 모든 매개변수에 동일한 학습률(learning rate)을 적용하는 것은 비효율적입니다. 따라서 Adagrad는 변수의 업데이트 횟수에 따라 learning ratae를 조절하는 옵션이 추가된 방법입니다. 여기서 변수는 가중치 W 벡터 하나의 값 W[i]를 의미합니다. Adagrad는 각 매개변수에 서로 다른 학습률을 적용시킵니다. 이 때, 변화가 많은 매개변수는 학습률이 작게 설정되고 변화가 적은 매개변수는 학습률을 높게 설정시킵니다. 이는 많이 변화한 변수는 최적값에 근접했을 것이라는 가정하에 작은 크기로 이동하면서 세밀한 값을 조정하고, 반대로 적게 변화한 변수들은 학습률을 크게하여 빠르게 loss값을 줄입니다.
 
@@ -106,7 +131,7 @@ Adagrad는 같은 입력 데이터가 여러번 학습되는 학습모델에 유
 
 ### 수식
 * $$ G(t) = G(t-1) -(\frac{\partial}{\partial w(t)} Cost(w(t)))^2 = \sum^{t}_{i=0} (\frac{\partial}{\partial w(i)} Cost(w(i)))^2 $$
-* $$ W(t+1) = W(t)-\alpha * \frac{1}{\sqrt{G(t)+e}} * \frac{\partial}{\partial w(i)} Cost(w(i)) $$
+* $$ W(t+1) = W(t)-\alpha * \frac{1}{\sqrt{G(t)+\epsilon}} * \frac{\partial}{\partial w(i)} Cost(w(i)) $$
 
 G(t)의 수식을 보면 현재 gradient 제곱에 G(t-1) 값이 더해집니다. 이는 각 step의 모든 gradient에 대한 sum of squares 라는 것을 뜻합니다. W(t+1)을 구하는 식에서 G(t)는 $$\epsilon$$ 값과 더해진 후 루트가 적용되고 $$\alpha$$ 에 나누어 집니다. 여기서 $$\epsilon$$은 아주 작은 상수를 의미하며, 0으로 나누는 것을 방지합니다. 그리고 $$\alpha$$는 learning rate를 나타내며 G(t)의 크기에 따라 값이 변합니다. 
 
@@ -124,15 +149,25 @@ optimizer = tf.train.AdagradOptimizer(learning_rate=0.01).minimize(loss)
 keras.optimizers.Adagrad(lr=0.01, epsilon=1e-6)
 {% endhighlight %}
 
-## 5. RMSprop
+## 7. RMSprop
 
-아다그라드는 학습을 계속 진행한 경우에는, 나중에 가서는 학습률이 지나치게 떨어진다는 단점이 있는데 이를 다른 수식으로 대체하여 이러한 단점을 개선하였습니다. 케라스에서는 다음과 같이 사용합니다
+Adagrad로 학습을 계속 진행하는 경우에 나중에 가서는 학습률이 지나치게 떨어진다는 단점이 있습니다. 그 이유는 Adagrad의 G(t) 값이 무한히 커지는 경우가 있기 때문입니다. RMSprop는 이를 방지하고자 지수 이동평균을 이용한 방법입니다. 지수 이동평균 이란 쉽게 말해 최근 값을 더 잘 반영하기 위해 최근 값과 이전 값에 각각 가중치를 주어 계산하는 방법입니다. 
+
+### 수식
+먼저 지수 이동평균의 수식을 알아보겠습니다. 
+
+* $$ x_k = \alpha p_k + (1-\alpha)x_{k-1}  where  \alpha = \frac{2}{N+1} $$
+
+위 식에서 지수 이동평균값은 x, 현재 값은 p, 가중치는 \alpha이며 아래 첨자 k는 step 혹은 time, 마지막으로 N은 값의 개수라고 보시면 됩니다. 만약 처음부터 현재까지 계산을 하게 된다면 N과 k 값은 같으며 가중치 \alpha 는 N이 작을 수록 커집니다. 계산 식을 풀어 써보면 아래와 같습니다. 
+
+![optimizer_n-2]({{ site.url }}/img/optimizer_n-2.PNG)
+
 
 {% highlight python %} 
 keras.optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=1e-06)
 {% endhighlight %}
 
-## 6. Adam
+## 8. Adam
 현재 가장 일반적으로 사용되는 알고리즘이라 할 수 있습니다. 아담은 알엠에스프롭과 모멘텀 두 가지를 합친 듯한 방법으로, 방향과 학습률 두 가지를 모두 잡기 위한 방법입니다. 케라스에서는 다음과 같이 사용합니다.
 
 {% highlight python %} 
