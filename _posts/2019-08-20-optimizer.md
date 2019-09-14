@@ -156,7 +156,7 @@ Adagrad로 학습을 계속 진행하는 경우에 나중에 가서는 학습률
 먼저 지수 이동평균의 수식을 알아보겠습니다. 
 
 * $$ x_k = \alpha p_k + (1-\alpha)x_{k-1} $$
-* where  $$ \alpha = \frac{2}{N+1} $$
+* $$ where  \alpha = \frac{2}{N+1} $$
 
 위 식에서 지수 이동평균값은 x, 현재 값은 p, 가중치는 \alpha이며 아래 첨자 k는 step 혹은 time, 마지막으로 N은 값의 개수라고 보시면 됩니다. 만약 처음부터 현재까지 계산을 하게 된다면 N과 k 값은 같으며 가중치 \alpha 는 N이 작을 수록 커집니다. 계산 식을 풀어 써보면 아래와 같습니다. 
 
@@ -203,9 +203,9 @@ AdaDelta는 Adagrad, RMSprop, Momentum 모두를 합친 경사하강법입니다
 
 ### 수식
 
-* $$ units of \delta x \propto units of g \propto \frac{\partial f}{\partial x} \propto \frac{1}{units of x} $$
+* $$ units of \bigtriangleup x \propto units of g \propto \frac{\partial f}{\partial x} \propto \frac{1}{units of x} $$
 
-논문에서는 ``가중치와 가중치 변화량의 단위가 같아야 한다``라고 명시되어 있습니다. 그리고 SGD, Momentum Adagrad는 업데이트가 기울기 양의 비율을 포함하므로 정확한 단위를 가지지 않고 따라서 업데이트는 단위가 없다라고 설명합니다. 그리고 위 수식을 보면 알 수 있듯이 $$\delta x$$의 단위는 $$x$$의 단위가 아닌 $$x$$ 단위의 역수와 관계가 있다는 것을 알 수 있습니다. 반대로 AdaDelta의 경우 Newton's method를 이용하여 아래 수식과 같이 $$\delta x$$와 $$x$$의 단위간의 관계를 만듭니다. 
+논문에서는 ``가중치와 가중치 변화량의 단위가 같아야 한다``라고 명시되어 있습니다. 그리고 SGD, Momentum Adagrad는 업데이트가 기울기 양의 비율을 포함하므로 정확한 단위를 가지지 않고 따라서 업데이트는 단위가 없다라고 설명합니다. 그리고 위 수식을 보면 알 수 있듯이 $$\bigtriangleup x$$의 단위는 $$x$$의 단위가 아닌 $$x$$ 단위의 역수와 관계가 있다는 것을 알 수 있습니다. 반대로 AdaDelta의 경우 Newton's method를 이용하여 아래 수식과 같이 $$\bigtriangleup x$$와 $$x$$의 단위간의 관계를 만듭니다. 
 
 * $$\delta x  \propto H^{-1} g \propto \frac{frac{\partial f}{\partial z}}{frac{\partial^2 f}{\partial x^2}} \propto units of x $$
 
