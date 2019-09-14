@@ -130,7 +130,7 @@ keras.optimizers.SGD(lr=0.1, momentum=0.9, nesterov=True)
 Adagrad는 같은 입력 데이터가 여러번 학습되는 학습모델에 유용하게 쓰이는데 대표적으로 언어와 관련된 word2vec이나 GloVe에 유용합니다. 이는 학습 단어의 등장 확률에 따라 변수의 사용 비율이 확연하게 차이나기 때문에 많이 등장한 단어는 가중치를 적게 수정하고 적게 등장한 단어는 많이 수정할 수 있기 때문입니다.
 
 ### 수식
-* $$ G(t) = G(t-1) -(\frac{\partial}{\partial w(t)} Cost(w(t)))^2 = \sum^{t}_{i=0} (\frac{\partial}{\partial w(i)} Cost(w(i)))^2 $$
+* $$ G(t) = G(t-1) +(\frac{\partial}{\partial w(t)} Cost(w(t)))^2 = \sum^{t}_{i=0} (\frac{\partial}{\partial w(i)} Cost(w(i)))^2 $$
 * $$ W(t+1) = W(t)-\alpha * \frac{1}{\sqrt{G(t)+\epsilon}} * \frac{\partial}{\partial w(i)} Cost(w(i)) $$
 
 G(t)의 수식을 보면 현재 gradient 제곱에 G(t-1) 값이 더해집니다. 이는 각 step의 모든 gradient에 대한 sum of squares 라는 것을 뜻합니다. W(t+1)을 구하는 식에서 G(t)는 $$\epsilon$$ 값과 더해진 후 루트가 적용되고 $$\alpha$$ 에 나누어 집니다. 여기서 $$\epsilon$$은 아주 작은 상수를 의미하며, 0으로 나누는 것을 방지합니다. 그리고 $$\alpha$$는 learning rate를 나타내며 G(t)의 크기에 따라 값이 변합니다. 
