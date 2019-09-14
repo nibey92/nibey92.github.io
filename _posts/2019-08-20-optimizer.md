@@ -199,7 +199,7 @@ AdaDelta는 Adagrad, RMSprop, Momentum 모두를 합친 경사하강법입니다
 
 ### 수식
 
-* $$ units \; of \; \bigtriangleup x \propto units \; of \; g \propto \frac{\partial f}{\partial x} \propto \frac{1}{units \; of \; x} $$
+![optimizer_n-7]({{ site.url }}/img/optimizer_n-7.PNG)
 
 논문에서는 ``가중치와 가중치 변화량의 단위가 같아야 한다``라고 명시되어 있습니다. 그리고 SGD, Momentum Adagrad는 업데이트가 기울기 양의 비율을 포함하므로 정확한 단위를 가지지 않고 따라서 업데이트는 단위가 없다라고 설명합니다. 그리고 위 수식을 보면 알 수 있듯이 $$\bigtriangleup x$$의 단위는 $$x$$의 단위가 아닌 $$x$$ 단위의 역수와 관계가 있다는 것을 알 수 있습니다. 반대로 AdaDelta의 경우 Newton's method를 이용하여 아래 수식과 같이 $$\bigtriangleup x$$와 $$x$$의 단위간의 관계를 만듭니다. 
 
