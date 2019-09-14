@@ -107,8 +107,7 @@ NAG는 momentum 값과 gradient 값이 더해저 실제(actual) 값을 만드는
 
 ### 수식
 
-* $$ V(t) = m * V(t-1) - \alpha \frac{\partial}{\partial(w+m*V(t-1))}Cost(w) $$
-* $$ W(t+1) = W(t) + V(t) $$
+![optimizer_n-3]({{ site.url }}/img/optimizer_n-3.PNG)
 
 ### Python
 {% highlight python %} v = m * v - learning_rate * gradient(weight[i-1]+m*v)
@@ -130,8 +129,9 @@ keras.optimizers.SGD(lr=0.1, momentum=0.9, nesterov=True)
 Adagrad는 같은 입력 데이터가 여러번 학습되는 학습모델에 유용하게 쓰이는데 대표적으로 언어와 관련된 word2vec이나 GloVe에 유용합니다. 이는 학습 단어의 등장 확률에 따라 변수의 사용 비율이 확연하게 차이나기 때문에 많이 등장한 단어는 가중치를 적게 수정하고 적게 등장한 단어는 많이 수정할 수 있기 때문입니다.
 
 ### 수식
-* $$ G(t) = G(t-1) +(\frac{\partial}{\partial w(t)} Cost(w(t)))^2 = \sum^{t}_{i=0} (\frac{\partial}{\partial w(i)} Cost(w(i)))^2 $$
-* $$ W(t+1) = W(t)-\alpha * \frac{1}{\sqrt{G(t)+\epsilon}} * \frac{\partial}{\partial w(i)} Cost(w(i)) $$
+
+
+![optimizer_n-4]({{ site.url }}/img/optimizer_n-4.PNG)
 
 G(t)의 수식을 보면 현재 gradient 제곱에 G(t-1) 값이 더해집니다. 이는 각 step의 모든 gradient에 대한 sum of squares 라는 것을 뜻합니다. W(t+1)을 구하는 식에서 G(t)는 $$\epsilon$$ 값과 더해진 후 루트가 적용되고 $$\alpha$$ 에 나누어 집니다. 여기서 $$\epsilon$$은 아주 작은 상수를 의미하며, 0으로 나누는 것을 방지합니다. 그리고 $$\alpha$$는 learning rate를 나타내며 G(t)의 크기에 따라 값이 변합니다. 
 
@@ -156,7 +156,8 @@ Adagrad로 학습을 계속 진행하는 경우에 나중에 가서는 학습률
 ### 수식
 먼저 지수 이동평균의 수식을 알아보겠습니다. 
 
-* $$ x_k = \alpha p_k + (1-\alpha)x_{k-1}  where  \alpha = \frac{2}{N+1} $$
+* $$ x_k = \alpha p_k + (1-\alpha)x_{k-1} 
+* where \alpha = \frac{2}{N+1} $$
 
 위 식에서 지수 이동평균값은 x, 현재 값은 p, 가중치는 \alpha이며 아래 첨자 k는 step 혹은 time, 마지막으로 N은 값의 개수라고 보시면 됩니다. 만약 처음부터 현재까지 계산을 하게 된다면 N과 k 값은 같으며 가중치 \alpha 는 N이 작을 수록 커집니다. 계산 식을 풀어 써보면 아래와 같습니다. 
 
