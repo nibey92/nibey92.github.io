@@ -199,4 +199,35 @@ keras.optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.
 {% endhighlight %}
 
 ## 9. AdaDelta(Adaptive Delta)
-AdaDelta는 Adagrad, RMSprop, Momentum 모두를 합친 경사하강법입니다. 크게 두가지 특징이 있습니다. 첫번재는 Adagrad 특징인 모든 step의 gradient 제곱의 합을 window size를 두어 window size 만큼의 합으로 변경합니다.ㅏ 
+AdaDelta는 Adagrad, RMSprop, Momentum 모두를 합친 경사하강법입니다. 크게 두가지 특징이 있습니다. ``첫번째``는 Adagrad 특징인 모든 step의 gradient 제곱의 합을 window size를 두어 window size 만큼의 합으로 변경합니다. 이후 RMSprop와 똑같이 지수 이동평균을 적용합니다. ``두번째``는 Hessian 근사법을 이용한 단위(Units) 수정입니다. 
+
+### 수식
+
+* $$ units of \delta x \propto units of g \propto \frac{\partial f}{\partial x} \propto \frac{1}{units of x} $$
+
+논문에서는 ``가중치와 가중치 변화량의 단위가 같아야 한다``라고 명시되어 있습니다. 그리고 SGD, Momentum Adagrad는 업데이트가 기울기 양의 비율을 포함하므로 정확한 단위를 가지지 않고 따라서 업데이트는 단위가 없다라고 설명합니다. 그리고 위 수식을 보면 알 수 있듯이 $$\delta x$$의 단위는 $$x$$의 단위가 아닌 $$x$$ 단위의 역수와 관계가 있다는 것을 알 수 있습니다. 반대로 AdaDelta의 경우 Newton's method를 이용하여 아래 수식과 같이 $$\delta x$$와 $$x$$의 단위간의 관계를 만듭니다. 
+
+* $$\delta x  \propto H^{-1} g \propto \frac{frac{\partial f}{\partial z}}{frac{\partial^2 f}{\partial x^2}} \propto units of x $$
+
+특정 함수에 대해 gradient는 일차미분(first derivative)를 나타내는 반면 Hessian은 함수의 이차미분(second derivative)를 나타냅니다. 즉, Hessian은 함수의 곡률(curvature) 특성을 나타내는 행렬로서 최적화 문제에 적용할 경우 Hessian을 이용하면 특정 지점 근처에서 함수를 2차 항까지 근사시킬 수 있습니다. (second-order Taylor expansion)
+
+더 큰 장점은 critical point의 종류를 판별할 수 있다는 것입니다. gradient는 함수에서 일차미분이 0이 되는 부분인 critical point (stationary point)를 찾을 수 있지만 Hessian은 해당 지점이 극대인지 극소인지 아니면 Saddle point인지 알 수 있습니다.
+
+경사 하강법에서는 First Order Methods가 적용된 하강법에서는 1차 미분만 하여 gradient가 0인 지점을 찾습니다. 그렇다보니 saddle point에서 문제가 발생할 수 있습니다. 반면 Second Order Methods를 사용한 AdaDelta는 saddle point에서 문제가 발생하지 않지만 2차 미분까지 하기때문에 계산속도가 상대적으로 느립니다.
+
+* $$G(t) = \gamma G(t-1) + (1-\gamma)(\frac{\partial}{\partial w(t)} Cost(w(t)))^2 $$
+* $$ \delta w(t) = \frac{\sqrt{\deltaS(t-1)+\epsilon}}{\sqrt{G(t)+\epsilon}} * \frac{\partial}{\partial w(i)} Cost(w(i))$$
+* $$ S(t) = \gammaS(t-1)+(1-\gamma)(\delta w (t))^2$$
+* $$ W(t+1) = W(t) - \delta w(t)$$
+* 단, $$G(0) = 0, S(0) = 0$$
+
+$$G(t) \rightarrow \delta w(t) \rightarrow S(t) \rightarrow W(t+1) $$ 순서로 계산이 되며 loop 크기만큼 반복됩니다. 
+
+### Tensorflow
+{% highlight python %} 
+optimizer = tf.train.adadeltaoptimizer(learning_rate=0.001, rho=0.95, epsilon=1e-08).minimize(loss)
+{% endhighlight %}
+### Keras
+{% highlight python %} 
+keras.optimizers.Adadelta(lr=1.0, rho=0.95, epsilon=None, decay=0.0)
+{% endhighlight %}
