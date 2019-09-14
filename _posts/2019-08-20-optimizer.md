@@ -19,7 +19,7 @@ comments: true
 이 방법은 가장 기본적인 경사 하강법입니다. 배치경사 하강법은 옵티마이저 중 하나로 loss를 구할때 전체 데이터를 고려합니다. 머신러닝에서는 1번의 훈련횟수를 1 epoch라고 하는데 배치 경사 하강법은 한번의 epoch에 모든 매개변수 업데이트를 단 한번 수행합니다. 이 방법은 전체 데이터를 고려해서 학습하므로 epoch당 시간이 오래 걸리며 메모리를 크게 요구한다는 단점이 있으나 글로벌 미니멈을 찾을 수 있다는 장점이 있습니다. 수식과 케라스 소스 코드는 다음과 같습니다. 
 
 ### 수식
-* $$ W(t+1) = W(t) - \alpha \frac{\rho}{\rho w} Cost(w) $$
+* $$ W(t+1) = W(t) - \alpha \frac{\partial}{\partial w} Cost(w) $$
 
 ### Keras 
 {% highlight python %} 
@@ -82,23 +82,23 @@ model.fit(X_train, y_train, batch_size=32)
 
 ### 수식
 
-* $$ V(t) = m * V(t-1) - \alpha \frac{\rho}{\rho w} Cost(w) $$
+* $$ V(t) = m * V(t-1) - \alpha \frac{\partial}{\partial w} Cost(w) $$
 * $$ W(t+1) = W(t) + V(t) $$
 
 여기서 $$\alpha$$는 leraning rate, $$m$$은 momentum 계수 입니다. 
 
 ### 코드
 #### Python
-{% highlight ruby %} 
+{% highlight python %} 
 v = m * v - learning_rate * gradient
 weight[i] += v
 {% endhighlight %}
 #### Tensorflow
-{% highlight ruby %} 
+{% highlight python %} 
 optimize = tf.train.MomentumOptimizer(learning_rate=0.01,momentum=0.9).minimize(loss)
 {% endhighlight %}
 #### Keras
-{% highlight ruby %} 
+{% highlight python %} 
 keras.optimizers.SGD(lr = 0.01, momentum= 0.9)
 {% endhighlight %}
 
@@ -118,30 +118,30 @@ G(t)의 수식을 보면 현재 gradient 제곱에 G(t-1) 값이 더해집니다
 ### 코드
 
 #### Python
-{% highlight ruby %} 
+{% highlight python %} 
 g += gradient**2
 weight[i] += - learning_rate ( gradient / (np.sqrt(g) + e)
 {% endhighlight %}
 
 #### Tensorflow
-{% highlight ruby %} 
+{% highlight python %} 
 optimizer = tf.train.AdagradOptimizer(learning_rate=0.01).minimize(loss)
 {% endhighlight %}
 
 #### Keras
-{% highlight ruby %} 
+{% highlight python %} 
 keras.optimizers.Adagrad(lr=0.01, epsilon=1e-6)
 {% endhighlight %}
 
 ### RMSprop
 
 아다그라드는 학습을 계속 진행한 경우에는, 나중에 가서는 학습률이 지나치게 떨어진다는 단점이 있는데 이를 다른 수식으로 대체하여 이러한 단점을 개선하였습니다. 케라스에서는 다음과 같이 사용합니다
-{% highlight ruby %} 
+{% highlight python %} 
 keras.optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=1e-06)
 {% endhighlight %}
 
 ### Adam
 현재 가장 일반적으로 사용되는 알고리즘이라 할 수 있습니다. 아담은 알엠에스프롭과 모멘텀 두 가지를 합친 듯한 방법으로, 방향과 학습률 두 가지를 모두 잡기 위한 방법입니다. 케라스에서는 다음과 같이 사용합니다.
-{% highlight ruby %} 
+{% highlight python %} 
 keras.optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False)
 {% endhighlight %}
