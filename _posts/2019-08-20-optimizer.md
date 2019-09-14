@@ -37,14 +37,12 @@ model.fit(X_train, y_train, batch_size=len(trainX))
 
 단 $$Cost(w)$$에 사용되는 $$x$$, 즉 입력 데이터의 수가 전체가 아닌 확률적으로 선택된 한 개만 사용됩니다. 수식에서 $$\alpha$$ 는 leraning rate를 뜻합니다.
 
-### 코드
-
-#### Python
+### Python
 {% highlight python %} 
 weight[i] += - learning_rate * gradient
 {% endhighlight %}
 
-#### Keras 
+### Keras 
 {% highlight python %} 
 keras.optimizers.SGD(lr=0.1)
 {% endhighlight %}
@@ -64,9 +62,7 @@ model.fit(X_train, y_train, batch_size=1)
 
 여기서는 $$Cost(w)$$에 사용되는 $$x$$, 입력 데이터의 수가 확률적으로 선택된 부분이 됩니다.
 
-### 코드
-
-#### Keras
+### Keras
 {% highlight python %} 
 keras.optimizers.SGD(lr=0.1)
 {% endhighlight %}
@@ -87,23 +83,22 @@ model.fit(X_train, y_train, batch_size=32)
 
 여기서 $$\alpha$$는 leraning rate, $$m$$은 momentum 계수 입니다. 
 
-### 코드
-#### Python
+### Python
 {% highlight python %} 
 v = m * v - learning_rate * gradient
 weight[i] += v
 {% endhighlight %}
-#### Tensorflow
+### Tensorflow
 {% highlight python %} 
 optimize = tf.train.MomentumOptimizer(learning_rate=0.01,momentum=0.9).minimize(loss)
 {% endhighlight %}
-#### Keras
+### Keras
 {% highlight python %} 
 keras.optimizers.SGD(lr = 0.01, momentum= 0.9)
 {% endhighlight %}
 
 
-## Adagrad
+## 4. Adagrad
 
 매개변수들은 각자 의미하는 바가 다른데, 모든 매개변수에 동일한 학습률(learning rate)을 적용하는 것은 비효율적입니다. 따라서 Adagrad는 변수의 업데이트 횟수에 따라 learning ratae를 조절하는 옵션이 추가된 방법입니다. 여기서 변수는 가중치 W 벡터 하나의 값 W[i]를 의미합니다. Adagrad는 각 매개변수에 서로 다른 학습률을 적용시킵니다. 이 때, 변화가 많은 매개변수는 학습률이 작게 설정되고 변화가 적은 매개변수는 학습률을 높게 설정시킵니다. 이는 많이 변화한 변수는 최적값에 근접했을 것이라는 가정하에 작은 크기로 이동하면서 세밀한 값을 조정하고, 반대로 적게 변화한 변수들은 학습률을 크게하여 빠르게 loss값을 줄입니다.
 
@@ -115,33 +110,31 @@ Adagrad는 같은 입력 데이터가 여러번 학습되는 학습모델에 유
 
 G(t)의 수식을 보면 현재 gradient 제곱에 G(t-1) 값이 더해집니다. 이는 각 step의 모든 gradient에 대한 sum of squares 라는 것을 뜻합니다. W(t+1)을 구하는 식에서 G(t)는 $$\epsilon$$ 값과 더해진 후 루트가 적용되고 $$\alpha$$ 에 나누어 집니다. 여기서 $$\epsilon$$은 아주 작은 상수를 의미하며, 0으로 나누는 것을 방지합니다. 그리고 $$\alpha$$는 learning rate를 나타내며 G(t)의 크기에 따라 값이 변합니다. 
 
-### 코드
-
-#### Python
+### Python
 {% highlight python %} 
 g += gradient**2
 weight[i] += - learning_rate ( gradient / (np.sqrt(g) + e)
 {% endhighlight %}
-
-#### Tensorflow
+### Tensorflow
 {% highlight python %} 
 optimizer = tf.train.AdagradOptimizer(learning_rate=0.01).minimize(loss)
 {% endhighlight %}
-
-#### Keras
+### Keras
 {% highlight python %} 
 keras.optimizers.Adagrad(lr=0.01, epsilon=1e-6)
 {% endhighlight %}
 
-### RMSprop
+## 5. RMSprop
 
 아다그라드는 학습을 계속 진행한 경우에는, 나중에 가서는 학습률이 지나치게 떨어진다는 단점이 있는데 이를 다른 수식으로 대체하여 이러한 단점을 개선하였습니다. 케라스에서는 다음과 같이 사용합니다
+
 {% highlight python %} 
 keras.optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=1e-06)
 {% endhighlight %}
 
-### Adam
+## 6. Adam
 현재 가장 일반적으로 사용되는 알고리즘이라 할 수 있습니다. 아담은 알엠에스프롭과 모멘텀 두 가지를 합친 듯한 방법으로, 방향과 학습률 두 가지를 모두 잡기 위한 방법입니다. 케라스에서는 다음과 같이 사용합니다.
+
 {% highlight python %} 
 keras.optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False)
 {% endhighlight %}
