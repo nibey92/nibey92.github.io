@@ -203,11 +203,11 @@ AdaDelta는 Adagrad, RMSprop, Momentum 모두를 합친 경사하강법입니다
 
 ### 수식
 
-* $$ units of \bigtriangleup x \propto units of g \propto \frac{\partial f}{\partial x} \propto \frac{1}{units of x} $$
+* $$ units \bigtriangleup x \propto units g \propto \frac{\partial f}{\partial x} \propto \frac{1}{units of x} $$
 
 논문에서는 ``가중치와 가중치 변화량의 단위가 같아야 한다``라고 명시되어 있습니다. 그리고 SGD, Momentum Adagrad는 업데이트가 기울기 양의 비율을 포함하므로 정확한 단위를 가지지 않고 따라서 업데이트는 단위가 없다라고 설명합니다. 그리고 위 수식을 보면 알 수 있듯이 $$\bigtriangleup x$$의 단위는 $$x$$의 단위가 아닌 $$x$$ 단위의 역수와 관계가 있다는 것을 알 수 있습니다. 반대로 AdaDelta의 경우 Newton's method를 이용하여 아래 수식과 같이 $$\bigtriangleup x$$와 $$x$$의 단위간의 관계를 만듭니다. 
 
-* $$\delta x  \propto H^{-1} g \propto \frac{frac{\partial f}{\partial z}}{frac{\partial^2 f}{\partial x^2}} \propto units of x $$
+* $$\bigtriangleup x  \propto H^{-1} g \propto \frac{frac{\partial f}{\partial z}}{frac{\partial^2 f}{\partial x^2}} \propto units of x $$
 
 특정 함수에 대해 gradient는 일차미분(first derivative)를 나타내는 반면 Hessian은 함수의 이차미분(second derivative)를 나타냅니다. 즉, Hessian은 함수의 곡률(curvature) 특성을 나타내는 행렬로서 최적화 문제에 적용할 경우 Hessian을 이용하면 특정 지점 근처에서 함수를 2차 항까지 근사시킬 수 있습니다. (second-order Taylor expansion)
 
@@ -216,12 +216,12 @@ AdaDelta는 Adagrad, RMSprop, Momentum 모두를 합친 경사하강법입니다
 경사 하강법에서는 First Order Methods가 적용된 하강법에서는 1차 미분만 하여 gradient가 0인 지점을 찾습니다. 그렇다보니 saddle point에서 문제가 발생할 수 있습니다. 반면 Second Order Methods를 사용한 AdaDelta는 saddle point에서 문제가 발생하지 않지만 2차 미분까지 하기때문에 계산속도가 상대적으로 느립니다.
 
 * $$G(t) = \gamma G(t-1) + (1-\gamma)(\frac{\partial}{\partial w(t)} Cost(w(t)))^2 $$
-* $$ \delta w(t) = \frac{\sqrt{\delta S(t-1)+\epsilon}}{\sqrt{G(t)+\epsilon}} * \frac{\partial}{\partial w(i)} Cost(w(i))$$
-* $$ S(t) = \gamma S(t-1)+(1-\gamma)(\delta w (t))^2$$
-* $$ W(t+1) = W(t) - \delta w(t)$$
-* 단, $$G(0) = 0, S(0) = 0$$
+* $$ \bigtriangleup w(t) = \frac{\sqrt{\bigtriangleup S(t-1)+\epsilon}}{\sqrt{G(t)+\epsilon}} * \frac{\partial}{\partial w(i)} Cost(w(i))$$
+* $$ S(t) = \gamma S(t-1)+(1-\gamma)(\bigtriangleup w (t))^2$$
+* $$ W(t+1) = W(t) - \bigtriangleup w(t)$$
+* $$G(0) = 0, S(0) = 0$$
 
-$$G(t) \rightarrow \delta w(t) \rightarrow S(t) \rightarrow W(t+1) $$ 순서로 계산이 되며 loop 크기만큼 반복됩니다. 
+$$G(t) \rightarrow \bigtriangleup w(t) \rightarrow S(t) \rightarrow W(t+1) $$ 순서로 계산이 되며 loop 크기만큼 반복됩니다. 
 
 ### Tensorflow
 {% highlight python %} 
