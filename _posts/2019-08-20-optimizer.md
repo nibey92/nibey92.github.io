@@ -181,13 +181,13 @@ keras.optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=1e-06)
 
 ### 수식
 
-* M(t) = \beta_1 M(t-1) + (1-\beta_1) \frac{\partial}{\partial w(t)}Cost(w(t))
-* V(t) = \beta_2 V(t-1) + (1=\beta_2) (\frac{\partial}{\partial w(i)}Cost(w(i)))^2
-* \hat{M}{+}(t) = \frac{M(t)}{1-\beta_1^t}
-* \hat{V}{+}(t) = \frac{V(t)}{1-\beta_2^t}
-* W(t+1) = W(t) - \alpha * \frac{\hat{M}{+}(t)}{\sqrt{\hat{V}{+}(t)+\epsilon}}
+* $$ M(t) = \beta_1 M(t-1) + (1-\beta_1) \frac{\partial}{\partial w(t)}Cost(w(t))$$
+* $$ V(t) = \beta_2 V(t-1) + (1=\beta_2) (\frac{\partial}{\partial w(i)}Cost(w(i)))^2$$
+* $$ \hat{M}{+}(t) = \frac{M(t)}{1-\beta_1^t}$$
+* $$ \hat{V}{+}(t) = \frac{V(t)}{1-\beta_2^t}$$
+* $$ W(t+1) = W(t) - \alpha * \frac{\hat{M}{+}(t)}{\sqrt{\hat{V}{+}(t)+\epsilon}}$$
 
-기존 RMSprop와 momentum과 다르게 M(t)와 V(t)가 바로 W(t+1) 수식에 들어가는 것이 아니라 M(t)와 V(t)가 들어갑니다. 이 부분을 논문에서는 bias가 수정된 값으로 변경하는 과정이라고 합니다. 이전에 저희가 알아야 할 것은 초기 M(0)와 V(0) 값이 0으로 초기화 되는데 시작값이 0이기 때문에 이동 평균을 구하면 0으로 편향된 값 추정이 발생할 수 있습니다. 특히 초기 감쇠 속도가 작은 경우 (즉, \beta가 1에 가까울 때 )에 발생합니다. 이를 방지하기 위해 $$1-\beta^t$$ 값을 나누어 bias 보정을 해줍니다. $$1-\beta^t$$는 M(t)와 V(t)의 기대값을 구하는 과정에서 찾을 수 있습니다. 추가적으로 $$\alpha=0.001$$, $$\beta_1 = 0.9$$. $$\beta_2 = 0.999$$, $$\epsilon = 10^{-8}$$ 이 가장 좋은 default 값이라 논문에 명시되어 있다고 합니다. 
+기존 RMSprop와 momentum과 다르게 $$M(t)$$와 $$V(t)$$가 바로 $$W(t+1)$$ 수식에 들어가는 것이 아니라 $$M(t)$$와 $$V(t)$$가 들어갑니다. 이 부분을 논문에서는 bias가 수정된 값으로 변경하는 과정이라고 합니다. 이전에 저희가 알아야 할 것은 초기 $$M(0)$$와 $$V(0)$$ 값이 0으로 초기화 되는데 시작값이 0이기 때문에 이동 평균을 구하면 0으로 편향된 값 추정이 발생할 수 있습니다. 특히 초기 감쇠 속도가 작은 경우 (즉, $$\beta$$가 1에 가까울 때 )에 발생합니다. 이를 방지하기 위해 $$1-\beta^t$$ 값을 나누어 bias 보정을 해줍니다. $$1-\beta^t$$는 $$M(t)$$와 $$V(t)$$의 기대값을 구하는 과정에서 찾을 수 있습니다. 추가적으로 $$\alpha=0.001$$, $$\beta_1 = 0.9$$. $$\beta_2 = 0.999$$, $$\epsilon = 10^{-8}$$ 이 가장 좋은 default 값이라 논문에 명시되어 있다고 합니다. 
 
 ### Tensorflow
 {% highlight python %} 
