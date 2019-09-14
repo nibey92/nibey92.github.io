@@ -130,7 +130,6 @@ Adagrad는 같은 입력 데이터가 여러번 학습되는 학습모델에 유
 
 ### 수식
 
-
 ![optimizer_n-4]({{ site.url }}/img/optimizer_n-4.PNG)
 
 G(t)의 수식을 보면 현재 gradient 제곱에 G(t-1) 값이 더해집니다. 이는 각 step의 모든 gradient에 대한 sum of squares 라는 것을 뜻합니다. W(t+1)을 구하는 식에서 G(t)는 $$\epsilon$$ 값과 더해진 후 루트가 적용되고 $$\alpha$$ 에 나누어 집니다. 여기서 $$\epsilon$$은 아주 작은 상수를 의미하며, 0으로 나누는 것을 방지합니다. 그리고 $$\alpha$$는 learning rate를 나타내며 G(t)의 크기에 따라 값이 변합니다. 
@@ -156,21 +155,45 @@ Adagrad로 학습을 계속 진행하는 경우에 나중에 가서는 학습률
 ### 수식
 먼저 지수 이동평균의 수식을 알아보겠습니다. 
 
-* $$ x_k = \alpha p_k + (1-\alpha)x_{k-1} 
-* where \alpha = \frac{2}{N+1} $$
+* $$ x_k = \alpha p_k + (1-\alpha)x_{k-1} $$
+* where  $$ \alpha = \frac{2}{N+1} $$
 
 위 식에서 지수 이동평균값은 x, 현재 값은 p, 가중치는 \alpha이며 아래 첨자 k는 step 혹은 time, 마지막으로 N은 값의 개수라고 보시면 됩니다. 만약 처음부터 현재까지 계산을 하게 된다면 N과 k 값은 같으며 가중치 \alpha 는 N이 작을 수록 커집니다. 계산 식을 풀어 써보면 아래와 같습니다. 
 
 ![optimizer_n-2]({{ site.url }}/img/optimizer_n-2.PNG)
 
-
+### Python
+{% highlight python %} 
+g = gamma * g + (1 - gamma) * gradient**2
+weight[i] += -learning_rate * gradient / (np.sqrt(g) + e)
+{% endhighlight %}
+### Tensorflow
+{% highlight python %} 
+optimize = tf.train.RMSPropOptimizer(learning_rate=0.01,decay=0.9,momentum=0.0,epsilon=1e-10).minimize(cost)
+{% endhighlight %}
+### Keras
 {% highlight python %} 
 keras.optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=1e-06)
 {% endhighlight %}
 
-## 8. Adam
-현재 가장 일반적으로 사용되는 알고리즘이라 할 수 있습니다. 아담은 알엠에스프롭과 모멘텀 두 가지를 합친 듯한 방법으로, 방향과 학습률 두 가지를 모두 잡기 위한 방법입니다. 케라스에서는 다음과 같이 사용합니다.
+## 8. Adam (Adaptive Moment Estimation)
+현재 가장 일반적으로 사용되는 알고리즘이라 할 수 있습니다. Adam은 RMSprop와 Momentum 두가지를 합친 듯한 방법으로, 방향과 학습률 두 가지를 모두 잡기 위한 방법입니다. RMSprop의 특징인 gradient의 제곱을 지수평균한 값을 사용하며 Momentum의 특징으로 gradient를 제곱하지 않은 값을 사용하여 지수평균을 구하고 수식에 활용합니다. 
 
+### 수식
+
+* M(t) = \beta_1 M(t-1) + (1-\beta_1) \frac{\partial}{\partial w(t)}Cost(w(t))
+* V(t) = \beta_2 V(t-1) + (1=\beta_2) (\frac{\partial}{\partial w(i)}Cost(w(i)))^2
+* \hat{M}{+}(t) = \frac{M(t)}{1-\beta_1^t}
+* \hat{V}{+}(t) = \frac{V(t)}{1-\beta_2^t}
+* W(t+1) = W(t) - \alpha * \frac{\hat{M}{+}(t)}{\sqrt{\hat{V}{+}(t)+\epsilon}}
+
+기존 RMSprop와 momentum과 다르게 M(t)와 V(t)가 바로 W(t+1) 수식에 들어가는 것이 아니라 M(t)와 V(t)가 들어갑니다. 이 부분을 논문에서는 bias가 수정된 값으로 변경하는 과정이라고 합니다. 이전에 저희가 알아야 할 것은 초기 M(0)와 V(0) 값이 0으로 초기화 되는데 시작값이 0이기 때문에 이동 평균을 구하면 0으로 편향된 값 추정이 발생할 수 있습니다. 특히 초기 감쇠 속도가 작은 경우 (즉, \beta가 1에 가까울 때 )에 발생합니다. 이를 방지하기 위해 $$1-\beta^t$$ 값을 나누어 bias 보정을 해줍니다. $$1-\beta^t$$는 M(t)와 V(t)의 기대값을 구하는 과정에서 찾을 수 있습니다. 추가적으로 $$\alpha=0.001$$, $$\beta_1 = 0.9$$. $$\beta_2 = 0.999$$, $$\epsilon = 10^{-8}$$ 이 가장 좋은 default 값이라 논문에 명시되어 있다고 합니다. 
+
+### Tensorflow
+{% highlight python %} 
+optimizer = tf.train.AdamOptimizer(learning_rate=0.001,beta1=0.9,beta2=0.999,epsilon=1e-08 ).minimize(loss)
+{% endhighlight %}
+### Keras
 {% highlight python %} 
 keras.optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False)
 {% endhighlight %}
